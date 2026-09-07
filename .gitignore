@@ -1,0 +1,14 @@
+# Python
+worker/.venv/
+worker/__pycache__/
+worker/**/__pycache__/
+worker/.pytest_cache/
+worker/.env
+*.pyc
+
+# Supabase local
+supabase/.branches
+supabase/.temp
+
+# OS
+.DS_Store

@@ -1,0 +1,98 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# `supabase start` derives its local anon/service_role JWTs deterministically
+# from config.toml's [auth] jwt_secret (the CLI's public default, unless a
+# project customizes it -- this one doesn't). These are the same fixed,
+# publicly-documented local-dev demo keys `supabase status` prints for every
+# fresh project; they are not secrets and grant nothing outside this
+# ephemeral CI Postgres instance.
+env:
+  SUPABASE_LOCAL_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0
+  SUPABASE_LOCAL_SERVICE_ROLE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: web/pnpm-lock.yaml
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      # GitHub-hosted ubuntu runners ship Docker already; this just needs a
+      # local Postgres, Auth, Storage and REST stack, no Ollama (see below).
+      - name: Start local Supabase
+        run: supabase start
+
+      - name: Apply migrations and seed data
+        run: supabase db reset
+
+      - name: supabase db lint
+        run: supabase db lint
+
+      - name: Install web dependencies
+        working-directory: web
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck (web)
+        working-directory: web
+        run: pnpm typecheck
+
+      - name: Lint (web)
+        working-directory: web
+        run: pnpm lint
+
+      - name: Unit tests (web)
+        working-directory: web
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54341
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ env.SUPABASE_LOCAL_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ env.SUPABASE_LOCAL_SERVICE_ROLE_KEY }}
+          SUPABASE_DB_URL: postgresql://postgres:postgres@127.0.0.1:54342/postgres
+        run: pnpm test
+
+      - name: Build (web)
+        working-directory: web
+        run: pnpm build
+
+      - name: Install worker dependencies
+        working-directory: worker
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install -r requirements-dev.txt
+
+      # The `requires_ollama` tests (Phase 0's gateway acceptance tests) need
+      # a local Ollama server with a multi-GB model pulled -- impractical on
+      # a hosted runner. They are run and verified locally (see
+      # PROGRESS.md); everything else runs here, including the redaction
+      # acceptance test and the gateway's all-providers-unreachable path.
+      - name: Unit tests (worker)
+        working-directory: worker
+        env:
+          SUPABASE_URL: http://127.0.0.1:54341
+          SUPABASE_SERVICE_ROLE_KEY: ${{ env.SUPABASE_LOCAL_SERVICE_ROLE_KEY }}
+        run: |
+          source .venv/bin/activate
+          pytest -m "not requires_ollama"
