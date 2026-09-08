@@ -12,3 +12,6 @@ supabase/.temp
 
 # OS
 .DS_Store
+
+# cloud DB connection string for scripts/seed-cloud.sh (never commit)
+supabase/.cloud.env
