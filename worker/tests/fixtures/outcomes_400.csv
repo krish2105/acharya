@@ -1,0 +1,401 @@
+framework_code,subject_code,grade,ref_code,statement,cognitive_level
+CBSE,SCI,3,CBSE.SCI.3.1.1,Recall human digestive system using a worked example from everyday life.,remember
+CBSE,SCI,3,CBSE.SCI.3.1.2,Describe nervous system and reflexes with reference to a labelled diagram.,understand
+CBSE,SCI,3,CBSE.SCI.3.1.3,Demonstrate heredity and Mendelian inheritance through a short investigation.,apply
+CBSE,SCI,3,CBSE.SCI.3.2.4,Analyse ecosystems and food webs in a real-world case study.,analyse
+CBSE,SCI,3,CBSE.SCI.3.2.5,Justify microorganisms and disease by interpreting given data.,evaluate
+CBSE,SCI,3,CBSE.SCI.3.2.6,"Propose atoms, elements and compounds with correct terminology.",create
+CBSE,SCI,3,CBSE.SCI.3.3.7,"Recall acids, bases and salts in written and oral form.",remember
+CBSE,SCI,3,CBSE.SCI.3.3.8,Describe metals and reactivity series using models or simulations.,understand
+CBSE,SCI,4,CBSE.SCI.4.1.1,Demonstrate nervous system and reflexes using a worked example from everyday life.,apply
+CBSE,SCI,4,CBSE.SCI.4.1.2,Analyse heredity and Mendelian inheritance with reference to a labelled diagram.,analyse
+CBSE,SCI,4,CBSE.SCI.4.1.3,Justify ecosystems and food webs through a short investigation.,evaluate
+CBSE,SCI,4,CBSE.SCI.4.2.4,Propose microorganisms and disease in a real-world case study.,create
+CBSE,SCI,4,CBSE.SCI.4.2.5,"Recall atoms, elements and compounds by interpreting given data.",remember
+CBSE,SCI,4,CBSE.SCI.4.2.6,"Describe acids, bases and salts with correct terminology.",understand
+CBSE,SCI,4,CBSE.SCI.4.3.7,Demonstrate metals and reactivity series in written and oral form.,apply
+CBSE,SCI,4,CBSE.SCI.4.3.8,Analyse forces and motion using models or simulations.,analyse
+CBSE,SCI,5,CBSE.SCI.5.1.1,Justify heredity and Mendelian inheritance using a worked example from everyday life.,evaluate
+CBSE,SCI,5,CBSE.SCI.5.1.2,Propose ecosystems and food webs with reference to a labelled diagram.,create
+CBSE,SCI,5,CBSE.SCI.5.1.3,Recall microorganisms and disease through a short investigation.,remember
+CBSE,SCI,5,CBSE.SCI.5.2.4,"Describe atoms, elements and compounds in a real-world case study.",understand
+CBSE,SCI,5,CBSE.SCI.5.2.5,"Demonstrate acids, bases and salts by interpreting given data.",apply
+CBSE,SCI,5,CBSE.SCI.5.2.6,Analyse metals and reactivity series with correct terminology.,analyse
+CBSE,SCI,5,CBSE.SCI.5.3.7,Justify forces and motion in written and oral form.,evaluate
+CBSE,SCI,5,CBSE.SCI.5.3.8,Propose heat transfer and thermal energy using models or simulations.,create
+CBSE,SCI,6,CBSE.SCI.6.1.1,Recall ecosystems and food webs using a worked example from everyday life.,remember
+CBSE,SCI,6,CBSE.SCI.6.1.2,Describe microorganisms and disease with reference to a labelled diagram.,understand
+CBSE,SCI,6,CBSE.SCI.6.1.3,"Demonstrate atoms, elements and compounds through a short investigation.",apply
+CBSE,SCI,6,CBSE.SCI.6.2.4,"Analyse acids, bases and salts in a real-world case study.",analyse
+CBSE,SCI,6,CBSE.SCI.6.2.5,Justify metals and reactivity series by interpreting given data.,evaluate
+CBSE,SCI,6,CBSE.SCI.6.2.6,Propose forces and motion with correct terminology.,create
+CBSE,SCI,6,CBSE.SCI.6.3.7,Recall heat transfer and thermal energy in written and oral form.,remember
+CBSE,SCI,6,CBSE.SCI.6.3.8,Describe electric circuits using models or simulations.,understand
+CBSE,SCI,7,CBSE.SCI.7.1.1,Demonstrate microorganisms and disease using a worked example from everyday life.,apply
+CBSE,SCI,7,CBSE.SCI.7.1.2,"Analyse atoms, elements and compounds with reference to a labelled diagram.",analyse
+CBSE,SCI,7,CBSE.SCI.7.1.3,"Justify acids, bases and salts through a short investigation.",evaluate
+CBSE,SCI,7,CBSE.SCI.7.2.4,Propose metals and reactivity series in a real-world case study.,create
+CBSE,SCI,7,CBSE.SCI.7.2.5,Recall forces and motion by interpreting given data.,remember
+CBSE,SCI,7,CBSE.SCI.7.2.6,Describe heat transfer and thermal energy with correct terminology.,understand
+CBSE,SCI,7,CBSE.SCI.7.3.7,Demonstrate electric circuits in written and oral form.,apply
+CBSE,SCI,7,CBSE.SCI.7.3.8,Analyse water cycle and weather using models or simulations.,analyse
+CBSE,SCI,8,CBSE.SCI.8.1.1,"Justify atoms, elements and compounds using a worked example from everyday life.",evaluate
+CBSE,SCI,8,CBSE.SCI.8.1.2,"Propose acids, bases and salts with reference to a labelled diagram.",create
+CBSE,SCI,8,CBSE.SCI.8.1.3,Recall metals and reactivity series through a short investigation.,remember
+CBSE,SCI,8,CBSE.SCI.8.2.4,Describe forces and motion in a real-world case study.,understand
+CBSE,SCI,8,CBSE.SCI.8.2.5,Demonstrate heat transfer and thermal energy by interpreting given data.,apply
+CBSE,SCI,8,CBSE.SCI.8.2.6,Analyse electric circuits with correct terminology.,analyse
+CBSE,SCI,8,CBSE.SCI.8.3.7,Justify water cycle and weather in written and oral form.,evaluate
+CBSE,SCI,8,CBSE.SCI.8.3.8,Propose photosynthesis: Calvin cycle using models or simulations.,create
+CBSE,SCI,9,CBSE.SCI.9.1.1,"Recall acids, bases and salts using a worked example from everyday life.",remember
+CBSE,SCI,9,CBSE.SCI.9.1.2,Describe metals and reactivity series with reference to a labelled diagram.,understand
+CBSE,SCI,9,CBSE.SCI.9.1.3,Demonstrate forces and motion through a short investigation.,apply
+CBSE,SCI,9,CBSE.SCI.9.2.4,Analyse heat transfer and thermal energy in a real-world case study.,analyse
+CBSE,SCI,9,CBSE.SCI.9.2.5,Justify electric circuits by interpreting given data.,evaluate
+CBSE,SCI,9,CBSE.SCI.9.2.6,Propose water cycle and weather with correct terminology.,create
+CBSE,SCI,9,CBSE.SCI.9.3.7,Recall photosynthesis: Calvin cycle in written and oral form.,remember
+CBSE,SCI,9,CBSE.SCI.9.3.8,Describe enzymes and reaction rates using models or simulations.,understand
+CBSE,SCI,10,CBSE.SCI.10.1.1,Demonstrate metals and reactivity series using a worked example from everyday life.,apply
+CBSE,SCI,10,CBSE.SCI.10.1.2,Analyse forces and motion with reference to a labelled diagram.,analyse
+CBSE,SCI,10,CBSE.SCI.10.1.3,Justify heat transfer and thermal energy through a short investigation.,evaluate
+CBSE,SCI,10,CBSE.SCI.10.2.4,Propose electric circuits in a real-world case study.,create
+CBSE,SCI,10,CBSE.SCI.10.2.5,Recall water cycle and weather by interpreting given data.,remember
+CBSE,SCI,10,CBSE.SCI.10.2.6,Describe photosynthesis: Calvin cycle with correct terminology.,understand
+CBSE,SCI,10,CBSE.SCI.10.3.7,Demonstrate enzymes and reaction rates in written and oral form.,apply
+CBSE,SCI,10,CBSE.SCI.10.3.8,Analyse respiratory system using models or simulations.,analyse
+CBSE,MATH,3,CBSE.MATH.3.1.1,Justify exponents and surds using a worked example from everyday life.,evaluate
+CBSE,MATH,3,CBSE.MATH.3.1.2,Propose simultaneous linear equations with reference to a labelled diagram.,create
+CBSE,MATH,3,CBSE.MATH.3.1.3,Recall arithmetic and geometric sequences through a short investigation.,remember
+CBSE,MATH,3,CBSE.MATH.3.2.4,Describe lines and angles in a real-world case study.,understand
+CBSE,MATH,3,CBSE.MATH.3.2.5,Demonstrate pythagoras theorem by interpreting given data.,apply
+CBSE,MATH,3,CBSE.MATH.3.2.6,Analyse area and perimeter with correct terminology.,analyse
+CBSE,MATH,3,CBSE.MATH.3.3.7,Justify transformations and symmetry in written and oral form.,evaluate
+CBSE,MATH,3,CBSE.MATH.3.3.8,Propose probability of events using models or simulations.,create
+CBSE,MATH,4,CBSE.MATH.4.1.1,Recall simultaneous linear equations using a worked example from everyday life.,remember
+CBSE,MATH,4,CBSE.MATH.4.1.2,Describe arithmetic and geometric sequences with reference to a labelled diagram.,understand
+CBSE,MATH,4,CBSE.MATH.4.1.3,Demonstrate lines and angles through a short investigation.,apply
+CBSE,MATH,4,CBSE.MATH.4.2.4,Analyse pythagoras theorem in a real-world case study.,analyse
+CBSE,MATH,4,CBSE.MATH.4.2.5,Justify area and perimeter by interpreting given data.,evaluate
+CBSE,MATH,4,CBSE.MATH.4.2.6,Propose transformations and symmetry with correct terminology.,create
+CBSE,MATH,4,CBSE.MATH.4.3.7,Recall probability of events in written and oral form.,remember
+CBSE,MATH,4,CBSE.MATH.4.3.8,Describe vectors using models or simulations.,understand
+CBSE,MATH,5,CBSE.MATH.5.1.1,Demonstrate arithmetic and geometric sequences using a worked example from everyday life.,apply
+CBSE,MATH,5,CBSE.MATH.5.1.2,Analyse lines and angles with reference to a labelled diagram.,analyse
+CBSE,MATH,5,CBSE.MATH.5.1.3,Justify pythagoras theorem through a short investigation.,evaluate
+CBSE,MATH,5,CBSE.MATH.5.2.4,Propose area and perimeter in a real-world case study.,create
+CBSE,MATH,5,CBSE.MATH.5.2.5,Recall transformations and symmetry by interpreting given data.,remember
+CBSE,MATH,5,CBSE.MATH.5.2.6,Describe probability of events with correct terminology.,understand
+CBSE,MATH,5,CBSE.MATH.5.3.7,Demonstrate vectors in written and oral form.,apply
+CBSE,MATH,5,CBSE.MATH.5.3.8,Analyse integration basics using models or simulations.,analyse
+CBSE,MATH,6,CBSE.MATH.6.1.1,Justify lines and angles using a worked example from everyday life.,evaluate
+CBSE,MATH,6,CBSE.MATH.6.1.2,Propose pythagoras theorem with reference to a labelled diagram.,create
+CBSE,MATH,6,CBSE.MATH.6.1.3,Recall area and perimeter through a short investigation.,remember
+CBSE,MATH,6,CBSE.MATH.6.2.4,Describe transformations and symmetry in a real-world case study.,understand
+CBSE,MATH,6,CBSE.MATH.6.2.5,Demonstrate probability of events by interpreting given data.,apply
+CBSE,MATH,6,CBSE.MATH.6.2.6,Analyse vectors with correct terminology.,analyse
+CBSE,MATH,6,CBSE.MATH.6.3.7,Justify integration basics in written and oral form.,evaluate
+CBSE,MATH,6,CBSE.MATH.6.3.8,Propose units and measurement using models or simulations.,create
+CBSE,MATH,7,CBSE.MATH.7.1.1,Recall pythagoras theorem using a worked example from everyday life.,remember
+CBSE,MATH,7,CBSE.MATH.7.1.2,Describe area and perimeter with reference to a labelled diagram.,understand
+CBSE,MATH,7,CBSE.MATH.7.1.3,Demonstrate transformations and symmetry through a short investigation.,apply
+CBSE,MATH,7,CBSE.MATH.7.2.4,Analyse probability of events in a real-world case study.,analyse
+CBSE,MATH,7,CBSE.MATH.7.2.5,Justify vectors by interpreting given data.,evaluate
+CBSE,MATH,7,CBSE.MATH.7.2.6,Propose integration basics with correct terminology.,create
+CBSE,MATH,7,CBSE.MATH.7.3.7,Recall units and measurement in written and oral form.,remember
+CBSE,MATH,7,CBSE.MATH.7.3.8,Describe inequalities using models or simulations.,understand
+CBSE,MATH,8,CBSE.MATH.8.1.1,Demonstrate area and perimeter using a worked example from everyday life.,apply
+CBSE,MATH,8,CBSE.MATH.8.1.2,Analyse transformations and symmetry with reference to a labelled diagram.,analyse
+CBSE,MATH,8,CBSE.MATH.8.1.3,Justify probability of events through a short investigation.,evaluate
+CBSE,MATH,8,CBSE.MATH.8.2.4,Propose vectors in a real-world case study.,create
+CBSE,MATH,8,CBSE.MATH.8.2.5,Recall integration basics by interpreting given data.,remember
+CBSE,MATH,8,CBSE.MATH.8.2.6,Describe units and measurement with correct terminology.,understand
+CBSE,MATH,8,CBSE.MATH.8.3.7,Demonstrate inequalities in written and oral form.,apply
+CBSE,MATH,8,CBSE.MATH.8.3.8,Analyse ratio and proportion using models or simulations.,analyse
+CBSE,MATH,9,CBSE.MATH.9.1.1,Justify transformations and symmetry using a worked example from everyday life.,evaluate
+CBSE,MATH,9,CBSE.MATH.9.1.2,Propose probability of events with reference to a labelled diagram.,create
+CBSE,MATH,9,CBSE.MATH.9.1.3,Recall vectors through a short investigation.,remember
+CBSE,MATH,9,CBSE.MATH.9.2.4,Describe integration basics in a real-world case study.,understand
+CBSE,MATH,9,CBSE.MATH.9.2.5,Demonstrate units and measurement by interpreting given data.,apply
+CBSE,MATH,9,CBSE.MATH.9.2.6,Analyse inequalities with correct terminology.,analyse
+CBSE,MATH,9,CBSE.MATH.9.3.7,Justify ratio and proportion in written and oral form.,evaluate
+CBSE,MATH,9,CBSE.MATH.9.3.8,Propose rational and irrational numbers using models or simulations.,create
+CBSE,MATH,10,CBSE.MATH.10.1.1,Recall probability of events using a worked example from everyday life.,remember
+CBSE,MATH,10,CBSE.MATH.10.1.2,Describe vectors with reference to a labelled diagram.,understand
+CBSE,MATH,10,CBSE.MATH.10.1.3,Demonstrate integration basics through a short investigation.,apply
+CBSE,MATH,10,CBSE.MATH.10.2.4,Analyse units and measurement in a real-world case study.,analyse
+CBSE,MATH,10,CBSE.MATH.10.2.5,Justify inequalities by interpreting given data.,evaluate
+CBSE,MATH,10,CBSE.MATH.10.2.6,Propose ratio and proportion with correct terminology.,create
+CBSE,MATH,10,CBSE.MATH.10.3.7,Recall rational and irrational numbers in written and oral form.,remember
+CBSE,MATH,10,CBSE.MATH.10.3.8,Describe linear equations in one variable using models or simulations.,understand
+CBSE,SST,3,CBSE.SST.3.1.1,Demonstrate medieval kingdoms of the subcontinent using a worked example from everyday life.,apply
+CBSE,SST,3,CBSE.SST.3.1.2,Analyse the Constitution and fundamental rights with reference to a labelled diagram.,analyse
+CBSE,SST,3,CBSE.SST.3.1.3,Justify judiciary and rule of law through a short investigation.,evaluate
+CBSE,SST,3,CBSE.SST.3.2.4,Propose rivers and water resources in a real-world case study.,create
+CBSE,SST,3,CBSE.SST.3.2.5,Recall population and urbanisation by interpreting given data.,remember
+CBSE,SST,3,CBSE.SST.3.2.6,Describe globalisation and development with correct terminology.,understand
+CBSE,SST,3,CBSE.SST.3.3.7,Demonstrate early river valley civilisations in written and oral form.,apply
+CBSE,SST,3,CBSE.SST.3.3.8,Analyse colonialism and resistance using models or simulations.,analyse
+CBSE,SST,4,CBSE.SST.4.1.1,Justify colonialism and resistance using a worked example from everyday life.,evaluate
+CBSE,SST,4,CBSE.SST.4.1.2,Propose democracy and elections with reference to a labelled diagram.,create
+CBSE,SST,4,CBSE.SST.4.1.3,Recall landforms and plate tectonics through a short investigation.,remember
+CBSE,SST,4,CBSE.SST.4.2.4,Describe agriculture and food security in a real-world case study.,understand
+CBSE,SST,4,CBSE.SST.4.2.5,Demonstrate transport and communication by interpreting given data.,apply
+CBSE,SST,4,CBSE.SST.4.2.6,Analyse environmental conservation with correct terminology.,analyse
+CBSE,SST,4,CBSE.SST.4.3.7,Justify empires and trade routes in written and oral form.,evaluate
+CBSE,SST,4,CBSE.SST.4.3.8,Propose freedom movement and independence using models or simulations.,create
+CBSE,SST,5,CBSE.SST.5.1.1,Recall freedom movement and independence using a worked example from everyday life.,remember
+CBSE,SST,5,CBSE.SST.5.1.2,Describe local government and panchayats with reference to a labelled diagram.,understand
+CBSE,SST,5,CBSE.SST.5.1.3,Demonstrate climate zones and monsoon through a short investigation.,apply
+CBSE,SST,5,CBSE.SST.5.2.4,Analyse industries and resources in a real-world case study.,analyse
+CBSE,SST,5,CBSE.SST.5.2.5,"Justify money, markets and livelihoods by interpreting given data.",evaluate
+CBSE,SST,5,CBSE.SST.5.2.6,Propose disaster preparedness with correct terminology.,create
+CBSE,SST,5,CBSE.SST.5.3.7,Recall medieval kingdoms of the subcontinent in written and oral form.,remember
+CBSE,SST,5,CBSE.SST.5.3.8,Describe the Constitution and fundamental rights using models or simulations.,understand
+CBSE,SST,6,CBSE.SST.6.1.1,Demonstrate the Constitution and fundamental rights using a worked example from everyday life.,apply
+CBSE,SST,6,CBSE.SST.6.1.2,Analyse judiciary and rule of law with reference to a labelled diagram.,analyse
+CBSE,SST,6,CBSE.SST.6.1.3,Justify rivers and water resources through a short investigation.,evaluate
+CBSE,SST,6,CBSE.SST.6.2.4,Propose population and urbanisation in a real-world case study.,create
+CBSE,SST,6,CBSE.SST.6.2.5,Recall globalisation and development by interpreting given data.,remember
+CBSE,SST,6,CBSE.SST.6.2.6,Describe early river valley civilisations with correct terminology.,understand
+CBSE,SST,6,CBSE.SST.6.3.7,Demonstrate colonialism and resistance in written and oral form.,apply
+CBSE,SST,6,CBSE.SST.6.3.8,Analyse democracy and elections using models or simulations.,analyse
+CBSE,SST,7,CBSE.SST.7.1.1,Justify democracy and elections using a worked example from everyday life.,evaluate
+CBSE,SST,7,CBSE.SST.7.1.2,Propose landforms and plate tectonics with reference to a labelled diagram.,create
+CBSE,SST,7,CBSE.SST.7.1.3,Recall agriculture and food security through a short investigation.,remember
+CBSE,SST,7,CBSE.SST.7.2.4,Describe transport and communication in a real-world case study.,understand
+CBSE,SST,7,CBSE.SST.7.2.5,Demonstrate environmental conservation by interpreting given data.,apply
+CBSE,SST,7,CBSE.SST.7.2.6,Analyse empires and trade routes with correct terminology.,analyse
+CBSE,SST,7,CBSE.SST.7.3.7,Justify freedom movement and independence in written and oral form.,evaluate
+CBSE,SST,7,CBSE.SST.7.3.8,Propose local government and panchayats using models or simulations.,create
+CBSE,SST,8,CBSE.SST.8.1.1,Recall local government and panchayats using a worked example from everyday life.,remember
+CBSE,SST,8,CBSE.SST.8.1.2,Describe climate zones and monsoon with reference to a labelled diagram.,understand
+CBSE,SST,8,CBSE.SST.8.1.3,Demonstrate industries and resources through a short investigation.,apply
+CBSE,SST,8,CBSE.SST.8.2.4,"Analyse money, markets and livelihoods in a real-world case study.",analyse
+CBSE,SST,8,CBSE.SST.8.2.5,Justify disaster preparedness by interpreting given data.,evaluate
+CBSE,SST,8,CBSE.SST.8.2.6,Propose medieval kingdoms of the subcontinent with correct terminology.,create
+CBSE,SST,8,CBSE.SST.8.3.7,Recall the Constitution and fundamental rights in written and oral form.,remember
+CBSE,SST,8,CBSE.SST.8.3.8,Describe judiciary and rule of law using models or simulations.,understand
+CBSE,SST,9,CBSE.SST.9.1.1,Demonstrate judiciary and rule of law using a worked example from everyday life.,apply
+CBSE,SST,9,CBSE.SST.9.1.2,Analyse rivers and water resources with reference to a labelled diagram.,analyse
+CBSE,SST,9,CBSE.SST.9.1.3,Justify population and urbanisation through a short investigation.,evaluate
+CBSE,SST,9,CBSE.SST.9.2.4,Propose globalisation and development in a real-world case study.,create
+CBSE,SST,9,CBSE.SST.9.2.5,Recall early river valley civilisations by interpreting given data.,remember
+CBSE,SST,9,CBSE.SST.9.2.6,Describe colonialism and resistance with correct terminology.,understand
+CBSE,SST,9,CBSE.SST.9.3.7,Demonstrate democracy and elections in written and oral form.,apply
+CBSE,SST,9,CBSE.SST.9.3.8,Analyse landforms and plate tectonics using models or simulations.,analyse
+CBSE,SST,10,CBSE.SST.10.1.1,Justify landforms and plate tectonics using a worked example from everyday life.,evaluate
+CBSE,SST,10,CBSE.SST.10.1.2,Propose agriculture and food security with reference to a labelled diagram.,create
+CBSE,SST,10,CBSE.SST.10.1.3,Recall transport and communication through a short investigation.,remember
+CBSE,SST,10,CBSE.SST.10.2.4,Describe environmental conservation in a real-world case study.,understand
+CBSE,SST,10,CBSE.SST.10.2.5,Demonstrate empires and trade routes by interpreting given data.,apply
+CBSE,SST,10,CBSE.SST.10.2.6,Analyse freedom movement and independence with correct terminology.,analyse
+CBSE,SST,10,CBSE.SST.10.3.7,Justify local government and panchayats in written and oral form.,evaluate
+CBSE,SST,10,CBSE.SST.10.3.8,Propose climate zones and monsoon using models or simulations.,create
+CBSE,ENG,3,CBSE.ENG.3.1.1,Recall vocabulary in context using a worked example from everyday life.,remember
+CBSE,ENG,3,CBSE.ENG.3.1.2,Describe argumentative and persuasive writing with reference to a labelled diagram.,understand
+CBSE,ENG,3,CBSE.ENG.3.1.3,Demonstrate summary and note-making through a short investigation.,apply
+CBSE,ENG,3,CBSE.ENG.3.2.4,Analyse prose: theme and setting in a real-world case study.,analyse
+CBSE,ENG,3,CBSE.ENG.3.2.5,Justify punctuation and editing by interpreting given data.,evaluate
+CBSE,ENG,3,CBSE.ENG.3.2.6,Propose media literacy with correct terminology.,create
+CBSE,ENG,3,CBSE.ENG.3.3.7,Recall reading for main idea and detail in written and oral form.,remember
+CBSE,ENG,3,CBSE.ENG.3.3.8,Describe narrative writing using models or simulations.,understand
+CBSE,ENG,4,CBSE.ENG.4.1.1,Demonstrate narrative writing using a worked example from everyday life.,apply
+CBSE,ENG,4,CBSE.ENG.4.1.2,Analyse letter and email writing with reference to a labelled diagram.,analyse
+CBSE,ENG,4,CBSE.ENG.4.1.3,Justify poetry: imagery and sound devices through a short investigation.,evaluate
+CBSE,ENG,4,CBSE.ENG.4.2.4,Propose grammar: tenses and agreement in a real-world case study.,create
+CBSE,ENG,4,CBSE.ENG.4.2.5,Recall speaking: presentations by interpreting given data.,remember
+CBSE,ENG,4,CBSE.ENG.4.2.6,Describe research and citation with correct terminology.,understand
+CBSE,ENG,4,CBSE.ENG.4.3.7,Demonstrate inference and author's purpose in written and oral form.,apply
+CBSE,ENG,4,CBSE.ENG.4.3.8,Analyse descriptive writing using models or simulations.,analyse
+CBSE,ENG,5,CBSE.ENG.5.1.1,Justify descriptive writing using a worked example from everyday life.,evaluate
+CBSE,ENG,5,CBSE.ENG.5.1.2,Propose report and notice writing with reference to a labelled diagram.,create
+CBSE,ENG,5,CBSE.ENG.5.1.3,Recall drama: character and dialogue through a short investigation.,remember
+CBSE,ENG,5,CBSE.ENG.5.2.4,Describe grammar: clauses and sentence types in a real-world case study.,understand
+CBSE,ENG,5,CBSE.ENG.5.2.5,Demonstrate listening comprehension by interpreting given data.,apply
+CBSE,ENG,5,CBSE.ENG.5.2.6,Analyse comparative reading across texts with correct terminology.,analyse
+CBSE,ENG,5,CBSE.ENG.5.3.7,Justify vocabulary in context in written and oral form.,evaluate
+CBSE,ENG,5,CBSE.ENG.5.3.8,Propose argumentative and persuasive writing using models or simulations.,create
+CBSE,ENG,6,CBSE.ENG.6.1.1,Recall argumentative and persuasive writing using a worked example from everyday life.,remember
+CBSE,ENG,6,CBSE.ENG.6.1.2,Describe summary and note-making with reference to a labelled diagram.,understand
+CBSE,ENG,6,CBSE.ENG.6.1.3,Demonstrate prose: theme and setting through a short investigation.,apply
+CBSE,ENG,6,CBSE.ENG.6.2.4,Analyse punctuation and editing in a real-world case study.,analyse
+CBSE,ENG,6,CBSE.ENG.6.2.5,Justify media literacy by interpreting given data.,evaluate
+CBSE,ENG,6,CBSE.ENG.6.2.6,Propose reading for main idea and detail with correct terminology.,create
+CBSE,ENG,6,CBSE.ENG.6.3.7,Recall narrative writing in written and oral form.,remember
+CBSE,ENG,6,CBSE.ENG.6.3.8,Describe letter and email writing using models or simulations.,understand
+CBSE,ENG,7,CBSE.ENG.7.1.1,Demonstrate letter and email writing using a worked example from everyday life.,apply
+CBSE,ENG,7,CBSE.ENG.7.1.2,Analyse poetry: imagery and sound devices with reference to a labelled diagram.,analyse
+CBSE,ENG,7,CBSE.ENG.7.1.3,Justify grammar: tenses and agreement through a short investigation.,evaluate
+CBSE,ENG,7,CBSE.ENG.7.2.4,Propose speaking: presentations in a real-world case study.,create
+CBSE,ENG,7,CBSE.ENG.7.2.5,Recall research and citation by interpreting given data.,remember
+CBSE,ENG,7,CBSE.ENG.7.2.6,Describe inference and author's purpose with correct terminology.,understand
+CBSE,ENG,7,CBSE.ENG.7.3.7,Demonstrate descriptive writing in written and oral form.,apply
+CBSE,ENG,7,CBSE.ENG.7.3.8,Analyse report and notice writing using models or simulations.,analyse
+CBSE,ENG,8,CBSE.ENG.8.1.1,Justify report and notice writing using a worked example from everyday life.,evaluate
+CBSE,ENG,8,CBSE.ENG.8.1.2,Propose drama: character and dialogue with reference to a labelled diagram.,create
+CBSE,ENG,8,CBSE.ENG.8.1.3,Recall grammar: clauses and sentence types through a short investigation.,remember
+CBSE,ENG,8,CBSE.ENG.8.2.4,Describe listening comprehension in a real-world case study.,understand
+CBSE,ENG,8,CBSE.ENG.8.2.5,Demonstrate comparative reading across texts by interpreting given data.,apply
+CBSE,ENG,8,CBSE.ENG.8.2.6,Analyse vocabulary in context with correct terminology.,analyse
+CBSE,ENG,8,CBSE.ENG.8.3.7,Justify argumentative and persuasive writing in written and oral form.,evaluate
+CBSE,ENG,8,CBSE.ENG.8.3.8,Propose summary and note-making using models or simulations.,create
+CBSE,ENG,9,CBSE.ENG.9.1.1,Recall summary and note-making using a worked example from everyday life.,remember
+CBSE,ENG,9,CBSE.ENG.9.1.2,Describe prose: theme and setting with reference to a labelled diagram.,understand
+CBSE,ENG,9,CBSE.ENG.9.1.3,Demonstrate punctuation and editing through a short investigation.,apply
+CBSE,ENG,9,CBSE.ENG.9.2.4,Analyse media literacy in a real-world case study.,analyse
+CBSE,ENG,9,CBSE.ENG.9.2.5,Justify reading for main idea and detail by interpreting given data.,evaluate
+CBSE,ENG,9,CBSE.ENG.9.2.6,Propose narrative writing with correct terminology.,create
+CBSE,ENG,9,CBSE.ENG.9.3.7,Recall letter and email writing in written and oral form.,remember
+CBSE,ENG,9,CBSE.ENG.9.3.8,Describe poetry: imagery and sound devices using models or simulations.,understand
+CBSE,ENG,10,CBSE.ENG.10.1.1,Demonstrate poetry: imagery and sound devices using a worked example from everyday life.,apply
+CBSE,ENG,10,CBSE.ENG.10.1.2,Analyse grammar: tenses and agreement with reference to a labelled diagram.,analyse
+CBSE,ENG,10,CBSE.ENG.10.1.3,Justify speaking: presentations through a short investigation.,evaluate
+CBSE,ENG,10,CBSE.ENG.10.2.4,Propose research and citation in a real-world case study.,create
+CBSE,ENG,10,CBSE.ENG.10.2.5,Recall inference and author's purpose by interpreting given data.,remember
+CBSE,ENG,10,CBSE.ENG.10.2.6,Describe descriptive writing with correct terminology.,understand
+CBSE,ENG,10,CBSE.ENG.10.3.7,Demonstrate report and notice writing in written and oral form.,apply
+CBSE,ENG,10,CBSE.ENG.10.3.8,Analyse drama: character and dialogue using models or simulations.,analyse
+IB_MYP,SCI,6,MYP.SCI.6.A.1,Justify ecosystems and food webs using a worked example from everyday life.,evaluate
+IB_MYP,SCI,6,MYP.SCI.6.B.2,Propose microorganisms and disease with reference to a labelled diagram.,create
+IB_MYP,SCI,6,MYP.SCI.6.C.3,"Recall atoms, elements and compounds through a short investigation.",remember
+IB_MYP,SCI,7,MYP.SCI.7.A.1,Describe microorganisms and disease in a real-world case study.,understand
+IB_MYP,SCI,7,MYP.SCI.7.B.2,"Demonstrate atoms, elements and compounds by interpreting given data.",apply
+IB_MYP,SCI,7,MYP.SCI.7.C.3,"Analyse acids, bases and salts with correct terminology.",analyse
+IB_MYP,SCI,8,MYP.SCI.8.A.1,"Justify atoms, elements and compounds in written and oral form.",evaluate
+IB_MYP,SCI,8,MYP.SCI.8.B.2,"Propose acids, bases and salts using models or simulations.",create
+IB_MYP,SCI,8,MYP.SCI.8.C.3,Recall metals and reactivity series using a worked example from everyday life.,remember
+IB_MYP,SCI,9,MYP.SCI.9.A.1,"Describe acids, bases and salts with reference to a labelled diagram.",understand
+IB_MYP,SCI,9,MYP.SCI.9.B.2,Demonstrate metals and reactivity series through a short investigation.,apply
+IB_MYP,SCI,9,MYP.SCI.9.C.3,Analyse forces and motion in a real-world case study.,analyse
+IB_MYP,SCI,10,MYP.SCI.10.A.1,Justify metals and reactivity series by interpreting given data.,evaluate
+IB_MYP,SCI,10,MYP.SCI.10.B.2,Propose forces and motion with correct terminology.,create
+IB_MYP,SCI,10,MYP.SCI.10.C.3,Recall heat transfer and thermal energy in written and oral form.,remember
+IB_MYP,MATH,6,MYP.MATH.6.A.1,Describe lines and angles using models or simulations.,understand
+IB_MYP,MATH,6,MYP.MATH.6.B.2,Demonstrate pythagoras theorem using a worked example from everyday life.,apply
+IB_MYP,MATH,6,MYP.MATH.6.C.3,Analyse area and perimeter with reference to a labelled diagram.,analyse
+IB_MYP,MATH,7,MYP.MATH.7.A.1,Justify pythagoras theorem through a short investigation.,evaluate
+IB_MYP,MATH,7,MYP.MATH.7.B.2,Propose area and perimeter in a real-world case study.,create
+IB_MYP,MATH,7,MYP.MATH.7.C.3,Recall transformations and symmetry by interpreting given data.,remember
+IB_MYP,MATH,8,MYP.MATH.8.A.1,Describe area and perimeter with correct terminology.,understand
+IB_MYP,MATH,8,MYP.MATH.8.B.2,Demonstrate transformations and symmetry in written and oral form.,apply
+IB_MYP,MATH,8,MYP.MATH.8.C.3,Analyse probability of events using models or simulations.,analyse
+IB_MYP,MATH,9,MYP.MATH.9.A.1,Justify transformations and symmetry using a worked example from everyday life.,evaluate
+IB_MYP,MATH,9,MYP.MATH.9.B.2,Propose probability of events with reference to a labelled diagram.,create
+IB_MYP,MATH,9,MYP.MATH.9.C.3,Recall vectors through a short investigation.,remember
+IB_MYP,MATH,10,MYP.MATH.10.A.1,Describe probability of events in a real-world case study.,understand
+IB_MYP,MATH,10,MYP.MATH.10.B.2,Demonstrate vectors by interpreting given data.,apply
+IB_MYP,MATH,10,MYP.MATH.10.C.3,Analyse integration basics with correct terminology.,analyse
+IB_DP,SCI,11,DP.BIO.11.1.1,Justify forces and motion in written and oral form.,evaluate
+IB_DP,SCI,11,DP.BIO.11.1.2,Propose heat transfer and thermal energy using models or simulations.,create
+IB_DP,SCI,11,DP.BIO.11.1.3,Recall electric circuits using a worked example from everyday life.,remember
+IB_DP,SCI,11,DP.BIO.11.2.4,Describe water cycle and weather with reference to a labelled diagram.,understand
+IB_DP,SCI,12,DP.BIO.12.1.1,Demonstrate heat transfer and thermal energy through a short investigation.,apply
+IB_DP,SCI,12,DP.BIO.12.1.2,Analyse electric circuits in a real-world case study.,analyse
+IB_DP,SCI,12,DP.BIO.12.1.3,Justify water cycle and weather by interpreting given data.,evaluate
+IB_DP,SCI,12,DP.BIO.12.2.4,Propose photosynthesis: Calvin cycle with correct terminology.,create
+IB_DP,MATH,11,DP.MATH.11.1.1,Recall vectors in written and oral form.,remember
+IB_DP,MATH,11,DP.MATH.11.1.2,Describe integration basics using models or simulations.,understand
+IB_DP,MATH,11,DP.MATH.11.1.3,Demonstrate units and measurement using a worked example from everyday life.,apply
+IB_DP,MATH,11,DP.MATH.11.2.4,Analyse inequalities with reference to a labelled diagram.,analyse
+IB_DP,MATH,12,DP.MATH.12.1.1,Justify integration basics through a short investigation.,evaluate
+IB_DP,MATH,12,DP.MATH.12.1.2,Propose units and measurement in a real-world case study.,create
+IB_DP,MATH,12,DP.MATH.12.1.3,Recall inequalities by interpreting given data.,remember
+IB_DP,MATH,12,DP.MATH.12.2.4,Describe ratio and proportion with correct terminology.,understand
+CAMB_PRIMARY,SCI,1,CAMB.SCI.1Bp.01,Demonstrate cell structure and organelles in written and oral form.,apply
+CAMB_PRIMARY,SCI,1,CAMB.SCI.1Bp.02,Analyse cellular respiration using models or simulations.,analyse
+CAMB_PRIMARY,SCI,1,CAMB.SCI.1Bp.03,Justify human digestive system using a worked example from everyday life.,evaluate
+CAMB_PRIMARY,SCI,2,CAMB.SCI.2Bp.01,Propose cellular respiration with reference to a labelled diagram.,create
+CAMB_PRIMARY,SCI,2,CAMB.SCI.2Bp.02,Recall human digestive system through a short investigation.,remember
+CAMB_PRIMARY,SCI,2,CAMB.SCI.2Bp.03,Describe nervous system and reflexes in a real-world case study.,understand
+CAMB_PRIMARY,SCI,3,CAMB.SCI.3Bp.01,Demonstrate human digestive system by interpreting given data.,apply
+CAMB_PRIMARY,SCI,3,CAMB.SCI.3Bp.02,Analyse nervous system and reflexes with correct terminology.,analyse
+CAMB_PRIMARY,SCI,3,CAMB.SCI.3Bp.03,Justify heredity and Mendelian inheritance in written and oral form.,evaluate
+CAMB_PRIMARY,SCI,4,CAMB.SCI.4Bp.01,Propose nervous system and reflexes using models or simulations.,create
+CAMB_PRIMARY,SCI,4,CAMB.SCI.4Bp.02,Recall heredity and Mendelian inheritance using a worked example from everyday life.,remember
+CAMB_PRIMARY,SCI,4,CAMB.SCI.4Bp.03,Describe ecosystems and food webs with reference to a labelled diagram.,understand
+CAMB_PRIMARY,SCI,5,CAMB.SCI.5Bp.01,Demonstrate heredity and Mendelian inheritance through a short investigation.,apply
+CAMB_PRIMARY,SCI,5,CAMB.SCI.5Bp.02,Analyse ecosystems and food webs in a real-world case study.,analyse
+CAMB_PRIMARY,SCI,5,CAMB.SCI.5Bp.03,Justify microorganisms and disease by interpreting given data.,evaluate
+CAMB_PRIMARY,MATH,1,CAMB.MATH.1Nn.01,Propose place value and number systems with correct terminology.,create
+CAMB_PRIMARY,MATH,1,CAMB.MATH.1Nn.02,Recall percentages and applications in written and oral form.,remember
+CAMB_PRIMARY,MATH,1,CAMB.MATH.1Nn.03,Describe exponents and surds using models or simulations.,understand
+CAMB_PRIMARY,MATH,2,CAMB.MATH.2Nn.01,Demonstrate percentages and applications using a worked example from everyday life.,apply
+CAMB_PRIMARY,MATH,2,CAMB.MATH.2Nn.02,Analyse exponents and surds with reference to a labelled diagram.,analyse
+CAMB_PRIMARY,MATH,2,CAMB.MATH.2Nn.03,Justify simultaneous linear equations through a short investigation.,evaluate
+CAMB_PRIMARY,MATH,3,CAMB.MATH.3Nn.01,Propose exponents and surds in a real-world case study.,create
+CAMB_PRIMARY,MATH,3,CAMB.MATH.3Nn.02,Recall simultaneous linear equations by interpreting given data.,remember
+CAMB_PRIMARY,MATH,3,CAMB.MATH.3Nn.03,Describe arithmetic and geometric sequences with correct terminology.,understand
+CAMB_PRIMARY,MATH,4,CAMB.MATH.4Nn.01,Demonstrate simultaneous linear equations in written and oral form.,apply
+CAMB_PRIMARY,MATH,4,CAMB.MATH.4Nn.02,Analyse arithmetic and geometric sequences using models or simulations.,analyse
+CAMB_PRIMARY,MATH,4,CAMB.MATH.4Nn.03,Justify lines and angles using a worked example from everyday life.,evaluate
+CAMB_PRIMARY,MATH,5,CAMB.MATH.5Nn.01,Propose arithmetic and geometric sequences with reference to a labelled diagram.,create
+CAMB_PRIMARY,MATH,5,CAMB.MATH.5Nn.02,Recall lines and angles through a short investigation.,remember
+CAMB_PRIMARY,MATH,5,CAMB.MATH.5Nn.03,Describe pythagoras theorem in a real-world case study.,understand
+CAMB_LOWER_SEC,SCI,6,CAMB.SCI.6Bp.01,"Justify acids, bases and salts using a worked example from everyday life.",apply
+CAMB_LOWER_SEC,SCI,6,CAMB.SCI.6Bp.02,Propose forces and motion with reference to a labelled diagram.,analyse
+CAMB_LOWER_SEC,SCI,6,CAMB.SCI.6Bp.03,Recall water cycle and weather through a short investigation.,evaluate
+CAMB_LOWER_SEC,SCI,6,CAMB.SCI.6Bp.04,Describe metals and reactivity series in a real-world case study.,create
+CAMB_LOWER_SEC,SCI,6,CAMB.SCI.6Bp.05,Recall metals and reactivity series using a worked example from everyday life.,remember
+CAMB_LOWER_SEC,SCI,7,CAMB.SCI.7Bp.01,Describe microorganisms and disease with reference to a labelled diagram.,understand
+CAMB_LOWER_SEC,SCI,7,CAMB.SCI.7Bp.02,"Demonstrate atoms, elements and compounds through a short investigation.",apply
+CAMB_LOWER_SEC,SCI,7,CAMB.SCI.7Bp.03,"Analyse acids, bases and salts in a real-world case study.",analyse
+CAMB_LOWER_SEC,SCI,7,CAMB.SCI.7Bp.04,Justify metals and reactivity series by interpreting given data.,evaluate
+CAMB_LOWER_SEC,SCI,7,CAMB.SCI.7Bp.05,Propose forces and motion with correct terminology.,create
+CAMB_LOWER_SEC,SCI,8,CAMB.SCI.8Bp.01,"Recall atoms, elements and compounds in written and oral form.",remember
+CAMB_LOWER_SEC,SCI,8,CAMB.SCI.8Bp.02,"Describe acids, bases and salts using models or simulations.",understand
+CAMB_LOWER_SEC,SCI,8,CAMB.SCI.8Bp.03,Demonstrate metals and reactivity series using a worked example from everyday life.,apply
+CAMB_LOWER_SEC,SCI,8,CAMB.SCI.8Bp.04,Analyse forces and motion with reference to a labelled diagram.,analyse
+CAMB_LOWER_SEC,SCI,8,CAMB.SCI.8Bp.05,Recall water cycle and weather in written and oral form.,evaluate
+CAMB_LOWER_SEC,MATH,6,CAMB.MATH.6Ni.01,Justify probability of events using a worked example from everyday life.,create
+CAMB_LOWER_SEC,MATH,6,CAMB.MATH.6Ni.02,Propose inequalities with reference to a labelled diagram.,remember
+CAMB_LOWER_SEC,MATH,6,CAMB.MATH.6Ni.03,Recall integration basics through a short investigation.,understand
+CAMB_LOWER_SEC,MATH,6,CAMB.MATH.6Ni.04,Describe ratio and proportion in a real-world case study.,apply
+CAMB_LOWER_SEC,MATH,6,CAMB.MATH.6Ni.05,Demonstrate transformations and symmetry by interpreting given data.,analyse
+CAMB_LOWER_SEC,MATH,7,CAMB.MATH.7Ni.01,Justify pythagoras theorem using a worked example from everyday life.,evaluate
+CAMB_LOWER_SEC,MATH,7,CAMB.MATH.7Ni.02,Propose area and perimeter with reference to a labelled diagram.,create
+CAMB_LOWER_SEC,MATH,7,CAMB.MATH.7Ni.03,Recall transformations and symmetry through a short investigation.,remember
+CAMB_LOWER_SEC,MATH,7,CAMB.MATH.7Ni.04,Describe probability of events in a real-world case study.,understand
+CAMB_LOWER_SEC,MATH,7,CAMB.MATH.7Ni.05,Describe transformations and symmetry with reference to a labelled diagram.,apply
+CAMB_LOWER_SEC,MATH,8,CAMB.MATH.8Ni.01,Analyse area and perimeter with correct terminology.,analyse
+CAMB_LOWER_SEC,MATH,8,CAMB.MATH.8Ni.02,Justify transformations and symmetry in written and oral form.,evaluate
+CAMB_LOWER_SEC,MATH,8,CAMB.MATH.8Ni.03,Propose probability of events using models or simulations.,create
+CAMB_LOWER_SEC,MATH,8,CAMB.MATH.8Ni.04,Propose ratio and proportion with correct terminology.,remember
+CAMB_LOWER_SEC,MATH,8,CAMB.MATH.8Ni.05,Describe integration basics with reference to a labelled diagram.,understand
+IGCSE,SCI,9,IGCSE.0610.9.1,"Demonstrate acids, bases and salts through a short investigation.",apply
+IGCSE,SCI,9,IGCSE.0610.9.2,Analyse metals and reactivity series in a real-world case study.,analyse
+IGCSE,SCI,9,IGCSE.0610.9.3,Justify forces and motion by interpreting given data.,evaluate
+IGCSE,SCI,9,IGCSE.0610.9.4,Propose heat transfer and thermal energy with correct terminology.,create
+IGCSE,SCI,9,IGCSE.0610.9.5,Recall electric circuits in written and oral form.,remember
+IGCSE,SCI,10,IGCSE.0610.10.1,Describe metals and reactivity series using models or simulations.,understand
+IGCSE,SCI,10,IGCSE.0610.10.2,Demonstrate forces and motion using a worked example from everyday life.,apply
+IGCSE,SCI,10,IGCSE.0610.10.3,Analyse heat transfer and thermal energy with reference to a labelled diagram.,analyse
+IGCSE,SCI,10,IGCSE.0610.10.4,Justify electric circuits through a short investigation.,evaluate
+IGCSE,SCI,10,IGCSE.0610.10.5,Propose water cycle and weather in a real-world case study.,create
+IGCSE,MATH,9,IGCSE.0580.9.1,Recall transformations and symmetry by interpreting given data.,remember
+IGCSE,MATH,9,IGCSE.0580.9.2,Describe probability of events with correct terminology.,understand
+IGCSE,MATH,9,IGCSE.0580.9.3,Demonstrate vectors in written and oral form.,apply
+IGCSE,MATH,9,IGCSE.0580.9.4,Analyse integration basics using models or simulations.,analyse
+IGCSE,MATH,9,IGCSE.0580.9.5,Justify units and measurement using a worked example from everyday life.,evaluate
+IGCSE,MATH,10,IGCSE.0580.10.1,Propose probability of events with reference to a labelled diagram.,create
+IGCSE,MATH,10,IGCSE.0580.10.2,Recall vectors through a short investigation.,remember
+IGCSE,MATH,10,IGCSE.0580.10.3,Describe integration basics in a real-world case study.,understand
+IGCSE,MATH,10,IGCSE.0580.10.4,Demonstrate units and measurement by interpreting given data.,apply
+IGCSE,MATH,10,IGCSE.0580.10.5,Analyse inequalities with correct terminology.,analyse
+AP,SCI,11,AP.BIO.11.1.1,Justify forces and motion in written and oral form.,evaluate
+AP,SCI,11,AP.BIO.11.1.2,Propose heat transfer and thermal energy using models or simulations.,create
+AP,SCI,11,AP.BIO.11.1.3,Recall electric circuits using a worked example from everyday life.,remember
+AP,SCI,11,AP.BIO.11.2.4,Describe water cycle and weather with reference to a labelled diagram.,understand
+AP,SCI,11,AP.BIO.11.2.5,Demonstrate photosynthesis: Calvin cycle through a short investigation.,apply
+AP,SCI,11,AP.BIO.11.2.6,Analyse enzymes and reaction rates in a real-world case study.,analyse
+AP,SCI,11,AP.BIO.11.3.7,Justify respiratory system by interpreting given data.,evaluate
+AP,SCI,11,AP.BIO.11.3.8,Propose human reproduction and adolescence with correct terminology.,create
+AP,SCI,11,AP.BIO.11.3.9,Recall natural selection and adaptation in written and oral form.,remember
+AP,SCI,12,AP.BIO.12.1.1,Describe heat transfer and thermal energy using models or simulations.,understand
+AP,SCI,12,AP.BIO.12.1.2,Demonstrate electric circuits using a worked example from everyday life.,apply
+AP,SCI,12,AP.BIO.12.1.3,Analyse water cycle and weather with reference to a labelled diagram.,analyse
+AP,SCI,12,AP.BIO.12.2.4,Justify photosynthesis: Calvin cycle through a short investigation.,evaluate
+AP,SCI,12,AP.BIO.12.2.5,Propose enzymes and reaction rates in a real-world case study.,create
+AP,SCI,12,AP.BIO.12.2.6,Recall respiratory system by interpreting given data.,remember
+AP,SCI,12,AP.BIO.12.3.7,Describe human reproduction and adolescence with correct terminology.,understand
+AP,SCI,12,AP.BIO.12.3.8,Demonstrate natural selection and adaptation in written and oral form.,apply
+AP,SCI,12,AP.BIO.12.3.9,Analyse classification of living things using models or simulations.,analyse

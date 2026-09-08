@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="meta">
+  <div><b>Programme</b>Computational Thinking &amp; AI (CBSE Circular Acad-15/2026)</div>
+  <div><b>Class / year</b>Class {{ grade }} · {{ academic_year }}<br><span class="muted">Requirement: {{ required }} hours per year</span></div>
+  <div><b>Contents</b>{% for s in pack_sections %}{{ loop.index }}. {{ s }}<br>{% endfor %}</div>
+</div>
+
+<h2>1. Scheme of work</h2>
+<table>
+  <thead><tr><th style="width:6%">#</th><th>Unit</th><th style="width:22%">Strand</th><th style="width:10%" class="num">Hours</th><th style="width:16%">Activities</th></tr></thead>
+  <tbody>{% for u in units %}<tr><td>{{ u.sequence_no }}</td><td>{{ u.title }}<br><span class="muted">{{ u.big_idea }}</span></td><td>{{ u.strand|replace('_',' ') }}</td><td class="num">{{ u.planned_hours }}</td><td>{{ u.ct_ai_activities|length }} ({{ u.ct_ai_activities|selectattr('mode','equalto','unplugged')|list|length }} unplugged)</td></tr>{% endfor %}
+  <tr><td></td><td><b>Total planned</b></td><td></td><td class="num"><b>{{ units|sum(attribute='planned_hours') }}</b></td><td></td></tr></tbody>
+</table>
+
+<h2>2. Hours delivered</h2>
+<table>
+  <thead><tr><th>Section</th><th class="num">Required</th><th class="num">Delivered</th><th class="num">Shortfall</th><th class="num">Sessions</th><th class="num">Projected (36 wks)</th><th class="num">Projected shortfall</th></tr></thead>
+  <tbody>{% for d in dashboard %}<tr><td>Grade {{ d.grade }}{{ d.section }}</td><td class="num">{{ d.required_hours }}</td><td class="num">{{ d.delivered_hours }}</td><td class="num">{{ d.shortfall }}</td><td class="num">{{ d.sessions }}</td><td class="num">{{ d.projected_hours }}</td><td class="num">{{ d.projected_shortfall }}</td></tr>{% endfor %}</tbody>
+</table>
+{% if ledger %}
+<h3>Ledger (first 40 sessions)</h3>
+<table><thead><tr><th>Date</th><th>Section</th><th>Activity</th><th>Mode</th><th class="num">Min</th></tr></thead>
+<tbody>{% for l in ledger[:40] %}<tr><td>{{ l.delivered_on }}</td><td>{{ l.sections.grade }}{{ l.sections.section }}</td><td>{{ l.ct_ai_activities.title if l.ct_ai_activities else '—' }}</td><td>{{ l.ct_ai_activities.mode if l.ct_ai_activities else '—' }}</td><td class="num">{{ l.minutes }}</td></tr>{% endfor %}</tbody></table>
+{% endif %}
+
+<div class="page-break"></div>
+<h2>3. Activity library</h2>
+<p>{{ modes.unplugged }} unplugged · {{ modes.plugged }} plugged · {{ modes.hybrid }} hybrid activities. Every unit carries an unplugged variant, so the programme runs without a lab.</p>
+{% for u in units %}<h3>{{ u.sequence_no }}. {{ u.title }}</h3><ul>{% for a in u.ct_ai_activities %}<li>{{ a.title }} <span class="muted">({{ a.mode }}, {{ a.duration_minutes }} min)</span></li>{% endfor %}</ul>{% endfor %}
+
+<div class="page-break"></div>
+<h2>4. Sample student work</h2>
+{% if projects %}
+<table><thead><tr><th>Student</th><th>Project</th><th>Rubric (teacher-entered)</th><th>Teacher comment</th><th>Assessed</th></tr></thead>
+<tbody>{% for p in projects %}<tr><td>{{ p.students.full_name if p.students else '—' }}</td><td>{{ p.title }}</td><td>{% for k, v in (p.rubric_scores or {}).items() %}{{ k|replace('_',' ') }}: {{ v }}<br>{% endfor %}</td><td>{{ p.teacher_comment }}</td><td>{{ p.assessed_on }}</td></tr>{% endfor %}</tbody></table>
+{% else %}<p class="muted">No assessed projects yet.</p>{% endif %}
+
+<h2>5. Teacher CPD coverage</h2>
+<p>Theme: Computational Thinking and Understanding Artificial Intelligence (CBSE 2026-27). {{ cpd|length }} record(s) across {{ teachers }} teachers.</p>
+<table><thead><tr><th>Teacher</th><th>Activity</th><th class="num">Hours</th><th>Completed</th></tr></thead>
+<tbody>{% for c in cpd %}<tr><td>{{ c.profiles.full_name if c.profiles else '—' }}</td><td>{{ c.activity }}</td><td class="num">{{ c.hours }}</td><td>{{ c.completed_on }}</td></tr>{% endfor %}</tbody></table>
+<div class="sig"><div>CT &amp; AI lead</div><div>Principal</div></div>
+{% endblock %}

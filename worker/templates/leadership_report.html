@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="meta">
+  <div><b>Window</b>Last {{ s.windowDays }} days</div>
+  <div><b>Generated</b>{{ now() }}</div>
+  <div><b>Teaching staff</b>{{ s.teachers }}</div>
+</div>
+<table style="margin:4mm 0 6mm">
+  <tr><th>AI drafts generated</th><th>Schema-valid</th><th>Teacher approvals</th><th>Approving staff</th><th>PII spans redacted</th><th>Teacher hours saved (est.)</th></tr>
+  <tr><td class="num">{{ s.generations }}</td><td class="num">{{ s.valid }}</td><td class="num">{{ s.approvals }}</td><td class="num">{{ s.approvers }}</td><td class="num">{{ s.redactions }}</td><td class="num">{{ (s.minutesSaved / 60) | round | int }}</td></tr>
+</table>
+<div class="callout">Every generation is a draft. Only rows in the approvals ledger reached a student, a parent or a printed paper; each carries the generated version, the final version and the edit distance between them. No prompt text is stored — only its hash. Zero personal spans reached any model.</div>
+
+<h2>By module</h2>
+<table><tr><th>Module</th><th class="num">Generated</th><th class="num">Schema-valid</th></tr>
+{% for m in s.byModule %}<tr><td>{{ m.module }}</td><td class="num">{{ m.generations }}</td><td class="num">{{ m.valid }}</td></tr>{% endfor %}</table>
+
+<h2>What teachers changed before approving</h2>
+<table><tr><th>Edit distance</th><th class="num">Approvals</th></tr>
+{% for b in s.editBuckets %}<tr><td>{{ b.bucket }}</td><td class="num">{{ b.count }}</td></tr>{% endfor %}</table>
+
+<h2>Time saved — assumptions shown</h2>
+<table><tr><th>Kind</th><th class="num">Approvals</th><th class="num">As generated</th><th class="num">Median edit</th><th class="num">Minutes each</th><th class="num">Minutes saved</th></tr>
+{% for t in s.byType %}<tr><td>{{ t.type | replace('_', ' ') }}</td><td class="num">{{ t.approvals }}</td><td class="num">{{ t.asGenerated }}</td><td class="num">{{ t.medianEdit }}</td><td class="num">{{ t.minutesEach }}</td><td class="num">{{ t.minutesSaved }}</td></tr>{% endfor %}</table>
+<p class="muted" style="font-size:9pt">"Minutes each" is the time a teacher would typically spend producing the equivalent by hand. These are stated estimates set by the school, not measurements.</p>
+
+<h2>Providers</h2>
+<table><tr><th>Provider</th><th class="num">Calls</th></tr>
+{% for p in s.byProvider %}<tr><td>{{ p.provider }}</td><td class="num">{{ p.count }}</td></tr>{% endfor %}</table>
+<p class="muted" style="font-size:9pt">Average model latency {{ s.avgLatencyMs }} ms.</p>
+{% endblock %}

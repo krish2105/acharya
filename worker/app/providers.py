@@ -13,6 +13,8 @@ what lets local dev run fully offline (Section 4).
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
+import os
+
 import httpx
 
 from .config import Settings
@@ -63,8 +65,12 @@ class OllamaProvider(Provider):
                     ],
                     "stream": False,
                     "format": "json",
+                    # Ollama's default 2048-token context truncates long prompts and
+                    # multi-item JSON; keep the model resident between gateway calls.
+                    "options": {"num_ctx": 8192, "num_predict": 4096, "temperature": 0.2},
+                    "keep_alive": "15m",
                 },
-                timeout=120,
+                timeout=int(os.environ.get("OLLAMA_TIMEOUT_S", "300")),
             )
             resp.raise_for_status()
             data = resp.json()

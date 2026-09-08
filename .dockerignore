@@ -1,0 +1,10 @@
+web
+node_modules
+worker/.venv
+worker/tests
+worker/scripts
+**/__pycache__
+.git
+docs
+supabase
+*.md

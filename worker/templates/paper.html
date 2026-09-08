@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block body %}
+{% set mode_title = {'question': 'Question paper', 'key': 'Answer key', 'scheme': 'Marking scheme', 'compliance': 'Blueprint compliance sheet'}[mode] %}
+<div class="meta">
+  <div><b>Document</b>{{ mode_title }}</div>
+  <div><b>Blueprint</b>{{ blueprint.label }}<br><span class="muted">{{ blueprint.frameworks.code }} · {{ blueprint.subjects.name }}</span></div>
+  <div><b>Marks / time</b>{{ blueprint.total_marks }} marks · {{ blueprint.duration_minutes }} min{% if section_info %}<br><span class="muted">Grade {{ section_info.grade }}{{ section_info.section }}</span>{% endif %}</div>
+</div>
+
+{% if mode == 'question' %}
+<p class="muted">General instructions: all questions are compulsory. Marks are indicated against each question. Read case and source material carefully before answering the sub-questions.</p>
+{% for label, items in sections.items() %}
+  <h2>Section {{ label }} — {{ section_titles.get(label, label) }}</h2>
+  {% for it in items %}
+    <div style="margin: 0 0 4mm; page-break-inside: avoid;">
+      <p style="margin:0"><b>{{ it.q_no }}.</b> {% if it.stimulus %}<em>{{ it.stimulus }}</em><br>{% endif %}{{ it.stem }} <span class="muted">[{{ it.q_marks }}]</span></p>
+      {% if it.options %}
+        <ol type="A" style="margin: 1mm 0 0 6mm; padding-left: 4mm;">{% for o in it.options %}<li>{{ o.text }}</li>{% endfor %}</ol>
+      {% endif %}
+      {% if it.parts %}
+        <ol type="i" style="margin: 1mm 0 0 6mm; padding-left: 4mm;">{% for p in it.parts %}<li>{{ p.text }} <span class="muted">[{{ p.marks }}]</span></li>{% endfor %}</ol>
+      {% endif %}
+    </div>
+  {% endfor %}
+{% endfor %}
+
+{% elif mode == 'key' %}
+<table>
+  <thead><tr><th style="width:10%">Q</th><th style="width:20%">Type</th><th>Answer</th><th style="width:10%" class="num">Marks</th></tr></thead>
+  <tbody>
+  {% for label, items in sections.items() %}{% for it in items %}
+    <tr><td><b>{{ it.q_no }}</b></td><td class="muted">{{ it.item_type|replace('_',' ') }}</td>
+      <td>{% if it.answer_key.correct %}<b>{{ it.answer_key.correct }}</b>{% elif it.answer_key.parts %}{% for p in it.answer_key.parts %}({{ loop.index }}) {{ p.answer }} [{{ p.marks }}]<br>{% endfor %}{% else %}{{ it.answer_key.answer }}{% if it.answer_key.working %}<br><span class="muted">{{ it.answer_key.working }}</span>{% endif %}{% endif %}</td>
+      <td class="num">{{ it.q_marks }}</td></tr>
+  {% endfor %}{% endfor %}
+  </tbody>
+</table>
+
+{% elif mode == 'scheme' %}
+{% for label, items in sections.items() %}
+  <h2>Section {{ label }}</h2>
+  {% for it in items %}
+    <div style="margin:0 0 3mm; page-break-inside: avoid;">
+      <p style="margin:0"><b>{{ it.q_no }}</b> <span class="muted">({{ it.q_marks }} marks · {{ it.cognitive_level }} · {{ it.difficulty_intended }})</span> — {{ it.marking_scheme }}</p>
+      {% if it.answer_key.points %}<ul style="margin:1mm 0 0 6mm; padding-left:4mm;">{% for p in it.answer_key.points %}<li>{{ p }} <span class="muted">(1)</span></li>{% endfor %}</ul>{% endif %}
+      <p style="margin:1mm 0 0" class="muted">Outcomes: {% for o in it.outcomes %}<span class="chip">{{ o }}</span> {% endfor %}</p>
+    </div>
+  {% endfor %}
+{% endfor %}
+
+{% else %}
+<div class="callout">
+  {% if compliance.marks_ok and compliance.competency_ok %}This paper meets the blueprint: {{ compliance.total_marks }} of {{ compliance.target_marks }} marks, {{ compliance.competency_pct }}% competency-based (target {{ compliance.competency_target }}%).
+  {% else %}This paper does not fully meet the blueprint. Review the shortfalls below before approval.{% endif %}
+</div>
+<h2>Targets vs achieved</h2>
+<table>
+  <thead><tr><th>Measure</th><th class="num">Target</th><th class="num">Achieved</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>Total marks</td><td class="num">{{ compliance.target_marks }}</td><td class="num">{{ compliance.total_marks }}</td><td>{{ 'OK' if compliance.marks_ok else 'Outside ±2' }}</td></tr>
+    <tr><td>Competency-based</td><td class="num">{{ compliance.competency_target }}%</td><td class="num">{{ compliance.competency_pct }}%</td><td>{{ 'OK' if compliance.competency_ok else 'Outside ±3%' }}</td></tr>
+    <tr><td>Objective</td><td class="num">{{ compliance.objective_target }}%</td><td class="num">{{ compliance.objective_pct }}%</td><td></td></tr>
+    <tr><td>Long answer</td><td class="num">{{ compliance.long_answer_target }}%</td><td class="num">{{ compliance.long_answer_pct }}%</td><td></td></tr>
+  </tbody>
+</table>
+<h2>Bloom distribution (marks)</h2>
+<table>
+  <thead><tr>{% for b, v in compliance.bloom.items() %}<th class="num">{{ b }}</th>{% endfor %}</tr></thead>
+  <tbody>
+    <tr>{% for b, v in compliance.bloom.items() %}<td class="num">{{ v }}%</td>{% endfor %}</tr>
+    <tr class="muted">{% for b, v in compliance.bloom.items() %}<td class="num">target {{ compliance.bloom_target.get(b, 0) }}%</td>{% endfor %}</tr>
+  </tbody>
+</table>
+<h2>Difficulty</h2>
+<p>{% for d, n in compliance.difficulty.items() %}<b>{{ d }}</b>: {{ n }} items &nbsp; {% endfor %}</p>
+<h2>Outcomes covered ({{ compliance.outcomes_covered|length }})</h2>
+<p>{% for o in compliance.outcomes_covered %}<span class="chip">{{ o }}</span> {% endfor %}</p>
+{% if shortfalls %}
+<h2>Shortfalls</h2>
+<table>
+  <thead><tr><th>Section</th><th>Needed</th><th>Available</th><th>Short by</th><th>Item types / marks</th></tr></thead>
+  <tbody>{% for s in shortfalls %}<tr><td>{{ s.section }} — {{ s.title }}</td><td class="num">{{ s.needed }}</td><td class="num">{{ s.available }}</td><td class="num">{{ s.short_by }}</td><td>{{ s.item_types|join(', ') if s.item_types else ('outcomes: ' ~ (s.outcome_ids|length)) }}{% if s.marks_each %} · {{ s.marks_each }} marks each{% endif %}</td></tr>{% endfor %}</tbody>
+</table>
+{% endif %}
+<div class="sig"><div>Exam officer</div><div>Head of department</div></div>
+{% endif %}
+{% endblock %}

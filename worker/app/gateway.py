@@ -63,6 +63,28 @@ def _load_template(db: Client, key: str, version: int | None) -> dict:
     return rows[0]
 
 
+def _strings(value) -> list[str]:
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, dict):
+        return [s for v in value.values() for s in _strings(v)]
+    if isinstance(value, list):
+        return [s for v in value for s in _strings(v)]
+    return []
+
+
+def _script_errors(parsed: dict, variables: dict) -> list[str]:
+    """Templates that ask for Hindi (variables['language_name'] starts with 'Hindi')
+    must come back in Devanagari; a schema cannot see that, so it is checked here
+    and takes part in the same single retry."""
+    if not str(variables.get("language_name", "")).startswith("Hindi"):
+        return []
+    text = " ".join(_strings(parsed))
+    if any("\u0900" <= ch <= "\u097f" for ch in text):
+        return []
+    return ["language: the output must be written in Hindi using Devanagari script; every user-facing string value came back in another script"]
+
+
 def _validate(output_text: str, schema: dict) -> tuple[dict | None, list[str]]:
     try:
         parsed = json.loads(output_text)
@@ -122,17 +144,30 @@ def generate(
         latency_ms = int((time.monotonic() - start) * 1000)
 
         parsed, errors = _validate(result.text, template["output_schema"])
+        if parsed is not None:
+            errors = _script_errors(parsed, variables)
         validation_result = "valid"
         if errors:
-            # one retry against the same provider, per rule 15
+            # one retry against the same provider, per rule 15 -- telling the
+            # model exactly which fields missed the schema. The errors quote only
+            # its own (already redacted) output, so nothing new reaches the model.
+            fix_note = (
+                "\n\nYour previous reply did not match the required JSON schema. Problems:\n- "
+                + "\n- ".join(e[:300] for e in errors[:12])
+                + "\nReturn the complete JSON again with these fields corrected. Every field must have "
+                "exactly the type the schema requires (a string field must be a plain string, not an "
+                "object or list). Output JSON only."
+            )
             try:
                 retry_start = time.monotonic()
-                result = provider.complete(redacted_system, redacted_user)
+                result = provider.complete(redacted_system, redacted_user + fix_note)
                 latency_ms = int((time.monotonic() - retry_start) * 1000)
             except ProviderError as e:
                 last_error = e
                 continue
             parsed, errors = _validate(result.text, template["output_schema"])
+            if parsed is not None:
+                errors = _script_errors(parsed, variables)
             validation_result = "retried_valid"
 
         if errors:

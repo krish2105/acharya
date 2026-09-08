@@ -1,9 +1,8 @@
-# Architecture (Phase 0)
+# Architecture
 
-This describes what Phase 0 actually built: a multi-tenant, multi-board shell
-where no model call can leak student data and no generated artifact can reach
-a child unapproved. It does not describe SETU/PRASHNA/SAARTHI/DARPAN/UDAY's
-feature content -- those are Phases 1-5.
+A multi-tenant, multi-board platform where no model call can leak student data
+and no generated artifact can reach a child unapproved. Module content is in
+`docs/DATA-MODEL.md` and `docs/FRAMEWORK-MAP.md`; this file is the shape.
 
 ## Components
 
@@ -95,8 +94,32 @@ order.
   stack version -- this machine's system Python was 3.14, installed via
   Homebrew's `python@3.12` instead).
 
-## Deliberately out of scope for Phase 0
+## Request paths
 
-SETU/PRASHNA/SAARTHI/DARPAN/UDAY feature tables, the framework ingestion
-pipeline, embeddings, and Playwright E2E coverage. See the master document,
-Section 8, Phases 1-6.
+```
+browser ── RLS-scoped supabase-js ──> PostgREST / Auth / Storage (signed URLs)
+browser ── server action ──> Next.js server ── X-Worker-Token ──> FastAPI worker
+                                        │                            ├─ redact → gateway → validate → guardrails
+                                        │                            ├─ pgvector align, WeasyPrint PDFs
+                                        └─ service role: audit_events, │  service role: generation_log, PDFs to private buckets
+                                           leadership summary, DPDP    └─ Resend/SMTP flush of notification_queue
+pg_cron ── coverage 03:00 · calibration 02:00 · projections Mon 04:00 · digests 08:00 · reminders Mon 09:00
+```
+
+## Shell
+
+Next.js App Router with route groups `(public)`, `(auth)`, `(app)` (staff shell:
+sidebar, glass header, ⌘K palette with contextual commands, guided tour,
+Hindi/English cookie locale, light/dark), `(parent)` and `(student)` portals
+(PWA manifest + service worker for offline capture). `lib/navigation.ts` is the
+single source for sidebar, palette and titles; `lib/rbac` gates rendering;
+RLS gates data.
+
+## Phase 6 hardening
+
+Security headers in `next.config.ts`; TOTP MFA with AAL2-restrictive RLS for
+the three highest roles; session/device management; audit viewer with
+`verify_chain()`; DPDP export/erasure; every FK column indexed and every
+personal-data table policied (tested); `reset_demo()` from a schema snapshot
+in < 45 s; Playwright demo-path suite with axe; deployment blueprints for
+Vercel + Render + Supabase (`docs/DEPLOY.md`).

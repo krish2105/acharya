@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="meta">
+  <div><b>Student</b>{{ student_name }}<br><span class="muted">{{ admission_no }}</span></div>
+  <div><b>Transition</b>{{ from_framework }} → {{ to_framework }} Class {{ target_grade }}</div>
+  <div><b>Prepared</b>{{ now() }}<br><span class="muted">For the parent meeting</span></div>
+</div>
+
+<div class="callout">
+  Of <b>{{ compared }}</b> Class {{ target_grade }} {{ to_framework }} outcomes in comparable subjects,
+  <b>{{ gaps|length }}</b> have no confirmed equivalent in the {{ from_framework }} curriculum the student has followed.
+  These are the outcomes to bridge before or during the first term.
+  {% if not_comparable %}<br><span class="muted">Not comparable (no {{ from_framework }} coverage to map against): {{ not_comparable|join(', ') }}.</span>{% endif %}
+</div>
+
+<h2>Outcomes to bridge</h2>
+<table>
+  <thead><tr><th style="width:24%">Outcome</th><th style="width:16%">Subject</th><th>Statement</th></tr></thead>
+  <tbody>
+  {% for g in gaps %}
+    <tr><td><span class="chip">{{ to_framework }} / {{ g.ref_code }}</span></td><td>{{ g.subject }}</td><td>{{ g.statement }}</td></tr>
+  {% else %}
+    <tr><td colspan="3" class="muted">No gaps found. Every target outcome has a confirmed equivalent.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<h2>How to read this</h2>
+<p class="muted">Equivalence is decided by the school's confirmed outcome graph: an outcome counts as covered only where a teacher has confirmed the link between the two curricula. Suggested-but-unconfirmed links are not used. This report is a planning aid for teachers and parents; it is not a grade, a prediction, or an assessment of the child.</p>
+
+<div class="sig"><div>Academic coordinator</div><div>Parent / guardian</div></div>
+{% endblock %}

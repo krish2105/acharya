@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="meta">
+  <div><b>Student</b>{{ student.full_name }}<br><span class="muted">{{ student.admission_no }} · Grade {{ grade }}{{ section }}</span></div>
+  <div><b>Term / stage</b>{{ term }}<br><span class="muted">{{ stage|title }} stage</span></div>
+  <div><b>Prepared</b>{{ now() }}<br><span class="muted">Approved by the class teacher, domain by domain</span></div>
+</div>
+
+<div class="callout">This card describes {{ student.full_name.split(' ')[0] }}'s own progress against learning outcomes and the four developmental domains. It contains no comparison with other children, no rank, and no prediction.</div>
+
+{% if 'scholastic' in sections %}
+<h2>Scholastic — progress per learning outcome</h2>
+{% if scholastic %}
+<table>
+  <thead><tr><th style="width:18%">Outcome</th><th style="width:16%">Subject</th><th>Statement</th><th style="width:14%">Progress</th></tr></thead>
+  <tbody>{% for s in scholastic %}<tr><td><span class="chip">{{ s.ref }}</span></td><td>{{ s.subject }}</td><td>{{ s.statement }}</td><td>{{ s.band }}</td></tr>{% endfor %}</tbody>
+</table>
+{% else %}<p class="muted">No outcome-linked assessment recorded this term.</p>{% endif %}
+{% endif %}
+
+<h2>Developmental domains</h2>
+{% for d in domains %}
+  <h3>{{ d.label }}{% if lang == 'hi' and d.label_hi %} · {{ d.label_hi }}{% endif %}</h3>
+  {% set desc = descriptors.get(d.domain) %}
+  {% if desc %}
+    {% set j = desc.generated_json or {} %}
+    <p>{{ desc.final_text }}</p>
+  {% else %}<p class="muted">—</p>{% endif %}
+{% endfor %}
+
+{% if 'co_scholastic' in sections and observations %}
+<h2>Co-scholastic — teacher observations</h2>
+<ul>{% for o in observations if o.domain in ['psychomotor','affective'] %}<li><span class="muted">{{ o.observed_on }} · {{ o.context }}</span> — {{ o.note }}</li>{% endfor %}</ul>
+{% endif %}
+
+<h2>360° inputs</h2>
+{% if self_input %}<h3>Self-assessment</h3><ul>{% for k, v in self_input.items() %}<li><b>{{ k|replace('_',' ')|capitalize }}:</b> {{ v }}</li>{% endfor %}</ul>{% endif %}
+{% if peer_inputs %}<h3>What classmates noticed (anonymous)</h3><ul>{% for p in peer_inputs %}{% for k, v in p.items() %}<li><b>{{ k|replace('_',' ')|capitalize }}:</b> {{ v }}</li>{% endfor %}{% endfor %}</ul>{% endif %}
+{% if parent_input %}<h3>From home</h3><ul>{% for k, v in parent_input.items() %}<li><b>{{ k|replace('_',' ')|capitalize }}:</b> {{ v }}</li>{% endfor %}</ul>{% endif %}
+
+{% if 'goals' in sections %}
+<h2>Goals for next term</h2>
+<ul>{% for d in domains %}{% set desc = descriptors.get(d.domain) %}{% if desc and desc.generated_json and desc.generated_json.next_step %}<li>{{ desc.generated_json.next_step }}</li>{% endif %}{% endfor %}</ul>
+{% endif %}
+
+<div class="sig"><div>Class teacher</div><div>Parent / guardian</div></div>
+{% endblock %}

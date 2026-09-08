@@ -1,10 +1,9 @@
-# Safety (v1, Phase 0)
+# Safety
 
 ACHARYA generates **aligned drafts, never decisions.** This document is the
 refusals list: what the product will not do, and why -- a sales document as
-much as a dev note (Section 8, Phase 6). This v1 covers what Phase 0 already
-enforces at the database level, plus the full set of standing refusals every
-later phase must hold to.
+much as a dev note. Everything below is enforced in the database or the
+worker and covered by a test named in `PROGRESS.md`.
 
 ## What ACHARYA refuses to do
 
@@ -25,7 +24,7 @@ later phase must hold to.
   and process evidence; per-outcome mastery for the teacher, never a label on
   a child.
 
-## What's enforced in the database today (Phase 0)
+## What's enforced
 
 - **Nothing AI-generated reaches a student without explicit human approval.**
   `enforce_approval_gate()` blocks any artifact from entering an
@@ -49,26 +48,34 @@ later phase must hold to.
   unconditionally by trigger, and `verify_chain()` detects tampering that
   bypasses even that (see `docs/ARCHITECTURE.md`).
 
-## What's designed but not yet built
+## Enforced by later phases (all built)
 
-These are non-negotiable for the phases that introduce them, not yet
-applicable because the relevant tables don't exist:
-
-- `super_admin` may never read DARPAN report content or teacher-student notes
-  in any tenant (rule 2.1.3; enforced in RLS once DARPAN's tables exist,
-  Phase 4). `web/lib/rbac`'s permission matrix already encodes this exclusion
-  for UI gating.
-- Peer input in DARPAN is anonymised to the receiving student, visible in
-  full only to the teacher (Phase 4).
-- Every generated item/artifact must link to at least one learning outcome in
-  a named framework, enforced by a DB trigger rejecting zero-link saves
-  (Phases 1-3).
-- Descriptor drafting (DARPAN) rejects comparative, diagnostic or predictive
-  language via post-validation (Phase 4).
+- `super_admin` can never read DARPAN report content or teacher-student notes
+  in any tenant: restrictive RLS policies on `observations`, `hpc_inputs`,
+  `hpc_descriptors`, `hpc_reports` (migration `0006`), plus the `can()` matrix.
+- Peer input is anonymised to the receiving student (`hpc_peer_feedback_for_student`
+  view); the teacher sees the author.
+- Every item and artifact links to >= 1 learning outcome in a named framework
+  -- deferred constraint triggers reject zero-link saves and the removal of
+  the last link (`0004`, `0005`; tested).
+- Only `human_confirmed` alignments count for coverage, generation and
+  transition reports. Models propose; people confirm.
+- Descriptor and parent-message drafting rejects comparative, diagnostic,
+  predictive and personality language (English and Hindi patterns) after
+  schema validation -- the teacher never sees the offending draft.
+- Remediation sets are bank-first: existing approved items before any
+  generation.
+- Project assessment in UDAY is rubric scores and a teacher comment; there is
+  no AI scoring path.
+- Substitute packs, evidence packs and progress cards include approved
+  material only.
 
 ## Data protection
 
-- Data residency: Supabase region `ap-south-1` (Mumbai) -- a Phase 6
-  deployment concern; Phase 0 runs entirely local.
-- Every student under 18 is a child under DPDP; parent-facing consent records
-  are captured for DARPAN parent inputs and any media use (Phase 4).
+- Data residency: Supabase region `ap-south-1` (Mumbai); see `docs/DEPLOY.md`.
+- Every student under 18 is a child under the DPDP Act 2023. Consent is
+  recorded per purpose and version (`consent_records`) and shown to parents.
+- Right of access and right to erasure are implemented end to end
+  (`/consent`, parent portal, `execute_erasure()`); see `docs/SECURITY.md`.
+- Prompts are never stored -- only their hash -- and zero personal spans reach
+  any model (tested over every seeded student).

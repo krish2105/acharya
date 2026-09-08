@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block body %}
+{% set b = artifact.body %}
+<div class="meta">
+  <div><b>Kind</b>{{ artifact.kind|replace('_',' ')|title }}{% if artifact.differentiation_level %} · {{ artifact.differentiation_level }}{% endif %}</div>
+  <div><b>Context</b>{{ artifact.frameworks.code if artifact.frameworks else '' }} · {{ artifact.subjects.name if artifact.subjects else '' }} · Grade {{ artifact.grade }}</div>
+  <div><b>Outcomes</b>{% for c in chips %}<span class="chip">{{ c }}</span> {% endfor %}</div>
+</div>
+
+{% if artifact.kind == 'lesson_plan' %}
+  <h2>Objectives</h2><ul>{% for o in b.objectives %}<li>{{ o.text }}{% if o.outcome_ref %} <span class="chip">{{ o.outcome_ref }}</span>{% endif %}</li>{% endfor %}</ul>
+  <h2>Hook</h2><p>{{ b.hook }}</p>
+  <h2>Sequence</h2>
+  <table><thead><tr><th style="width:8%">Min</th><th style="width:22%">Step</th><th>Teacher does</th><th>Students do</th></tr></thead>
+  <tbody>{% for s in b.sequence %}<tr><td class="num">{{ s.minutes }}</td><td>{{ s.step }}</td><td>{{ s.teacher_does }}</td><td>{{ s.students_do }}</td></tr>{% endfor %}</tbody></table>
+  {% if b.checks_for_understanding %}<h2>Checks for understanding</h2><ul>{% for c in b.checks_for_understanding %}<li>{{ c }}</li>{% endfor %}</ul>{% endif %}
+  <h2>Differentiation</h2><p><b>Support:</b> {{ b.differentiation.support }}</p><p><b>Core:</b> {{ b.differentiation.core }}</p><p><b>Extension:</b> {{ b.differentiation.extension }}</p>
+  <h2>Closure</h2><p>{{ b.closure }}</p>
+  {% if b.homework %}<h2>Homework</h2><p>{{ b.homework }}</p>{% endif %}
+
+{% elif artifact.kind == 'worksheet' %}
+  {% for level in ['support', 'core', 'extension'] %}
+    {% set L = b.levels[level] %}
+    {% if not loop.first %}<div class="page-break"></div>{% endif %}
+    <h2>{{ level|title }} level</h2>
+    <p class="muted">{{ L.instructions }}</p>
+    <ol>{% for q in L.questions %}<li style="margin-bottom:4mm">{{ q.q }} <span class="muted">[{{ q.marks }}]</span></li>{% endfor %}</ol>
+  {% endfor %}
+  <div class="page-break"></div>
+  <h2>Answer key</h2>
+  {% for k in b.answer_key %}<h3>{{ k.level|title }}</h3><ol>{% for a in k.answers %}<li>{{ a }}</li>{% endfor %}</ol>{% endfor %}
+
+{% elif artifact.kind == 'rubric' %}
+  <p><b>Task:</b> {{ b.task }}</p>
+  {% for c in b.criteria %}
+    <h3>{{ c.name }}{% if c.outcome_ref %} <span class="chip">{{ c.outcome_ref }}</span>{% endif %}</h3>
+    <table><thead><tr>{% for band in c.bands %}<th>{{ band.level }} ({{ band.marks }})</th>{% endfor %}</tr></thead>
+    <tbody><tr>{% for band in c.bands %}<td>{{ band.descriptor }}</td>{% endfor %}</tr></tbody></table>
+  {% endfor %}
+
+{% elif artifact.kind == 'parent_message' %}
+  <p><b>{{ b.subject }}</b></p>
+  <p style="white-space: pre-wrap">{{ b.message }}</p>
+
+{% elif artifact.kind == 'activity' %}
+  <p><b>Duration:</b> {{ b.duration_minutes }} minutes</p>
+  {% if b.materials %}<h2>Materials</h2><ul>{% for m in b.materials %}<li>{{ m }}</li>{% endfor %}</ul>{% endif %}
+  <h2>Steps</h2><ol>{% for s in b.steps %}<li>{{ s }}</li>{% endfor %}</ol>
+  <h2>Assessment note</h2><p>{{ b.assessment_note }}</p>
+
+{% elif artifact.kind == 'remediation_set' %}
+  <div class="callout">Built from the approved item bank first; generated practice only where the bank had nothing for an outcome.</div>
+  {% for w in b.weak_outcomes %}
+    <h2><span class="chip">{{ w.ref_code }}</span> {{ w.statement }}{% if w.avg is not none %} <span class="muted">(class average {{ (w.avg * 100)|round }}%)</span>{% endif %}</h2>
+    {% if w.source == 'bank' %}
+      <ol>{% for it in w['items'] %}<li style="margin-bottom:3mm">{% if it.stimulus %}<em>{{ it.stimulus }}</em><br>{% endif %}{{ it.stem }} <span class="muted">[{{ it.marks }}]</span></li>{% endfor %}</ol>
+    {% elif w.generated %}
+      <p class="muted">Re-teach: {{ w.generated.reteach }}</p>
+      <ol>{% for p in w.generated.practice %}<li style="margin-bottom:3mm">{{ p.question }}<br><span class="muted">Hint: {{ p.hint }}</span></li>{% endfor %}</ol>
+    {% else %}<p class="muted">No practice available yet — generate candidates in PRASHNA.</p>{% endif %}
+  {% endfor %}
+
+{% elif artifact.kind == 'revision_sheet' %}
+  {% for s in b.sections %}
+    <h2><span class="chip">{{ s.outcome_ref }}</span></h2>
+    <h3>Key points</h3><ul>{% for k in s.key_points %}<li>{{ k }}</li>{% endfor %}</ul>
+    {% if s.common_errors %}<h3>Common errors</h3><ul>{% for e in s.common_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+    {% if s.practice %}<h3>Practice</h3><ol>{% for p in s.practice %}<li>{{ p }}</li>{% endfor %}</ol>{% endif %}
+  {% endfor %}
+{% endif %}
+{% endblock %}

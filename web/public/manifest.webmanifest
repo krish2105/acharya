@@ -1,0 +1,10 @@
+{
+  "name": "ACHARYA",
+  "short_name": "ACHARYA",
+  "description": "Aligned drafts, never decisions.",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#f6f7f9",
+  "theme_color": "#931b20",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

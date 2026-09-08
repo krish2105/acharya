@@ -1,0 +1,53 @@
+# Render blueprint for the ACHARYA worker (FastAPI). The web app deploys to
+# Vercel (web/vercel.json, region bom1); Supabase runs in ap-south-1.
+services:
+  - type: web
+    name: acharya-worker
+    runtime: docker
+    region: singapore
+    plan: starter
+    dockerfilePath: ./worker/Dockerfile
+    dockerContext: ./worker
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: AI_PROVIDER
+        value: gemini
+      - key: GEMINI_MODEL
+        value: gemini-2.0-flash
+      - key: GROQ_MODEL
+        value: llama-3.1-8b-instant
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: MAIL_FROM
+        sync: false
+      - key: WEB_URL
+        sync: false
+      - key: WORKER_TOKEN
+        generateValue: true
+
+  # Delivers the pg_cron-enqueued digests every 15 minutes.
+  - type: cron
+    name: acharya-notify-flush
+    runtime: image
+    region: singapore
+    schedule: "*/15 * * * *"
+    image:
+      url: docker.io/curlimages/curl:latest
+    dockerCommand: sh -c 'curl -fsS -X POST "$WORKER_URL/notify/flush" -H "X-Worker-Token: $WORKER_TOKEN" -H "Content-Type: application/json" -d "{}"'
+    envVars:
+      - key: WORKER_URL
+        sync: false
+      - key: WORKER_TOKEN
+        fromService:
+          type: web
+          name: acharya-worker
+          envVarKey: WORKER_TOKEN

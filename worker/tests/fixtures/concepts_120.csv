@@ -1,0 +1,121 @@
+subject_code,title,stage
+SCI,Cell structure and organelles,preparatory
+SCI,Photosynthesis: light-dependent reactions,preparatory
+SCI,Photosynthesis: Calvin cycle,preparatory
+SCI,Cellular respiration,preparatory
+SCI,Diffusion and osmosis,preparatory
+SCI,Enzymes and reaction rates,preparatory
+SCI,Human digestive system,preparatory
+SCI,Circulatory system and blood,preparatory
+SCI,Respiratory system,preparatory
+SCI,Nervous system and reflexes,preparatory
+SCI,Reproduction in flowering plants,preparatory
+SCI,Human reproduction and adolescence,preparatory
+SCI,Heredity and Mendelian inheritance,preparatory
+SCI,DNA structure and replication,middle
+SCI,Natural selection and adaptation,middle
+SCI,Ecosystems and food webs,middle
+SCI,Nutrient cycles,middle
+SCI,Classification of living things,middle
+SCI,Microorganisms and disease,middle
+SCI,Immune response and vaccination,middle
+SCI,States of matter and particle model,middle
+SCI,"Atoms, elements and compounds",middle
+SCI,Periodic table trends,middle
+SCI,Chemical bonding,middle
+SCI,"Acids, bases and salts",middle
+SCI,Chemical reactions and equations,middle
+SCI,Rates of reaction,secondary
+SCI,Metals and reactivity series,secondary
+SCI,Carbon compounds and hydrocarbons,secondary
+SCI,Electrolysis,secondary
+SCI,Forces and motion,secondary
+SCI,Newton's laws,secondary
+SCI,"Work, energy and power",secondary
+SCI,Heat transfer and thermal energy,secondary
+SCI,Light: reflection and refraction,secondary
+SCI,Sound and waves,secondary
+SCI,Electric circuits,secondary
+SCI,Magnetism and electromagnetism,secondary
+SCI,"Earth, moon and seasons",secondary
+SCI,Water cycle and weather,secondary
+MATH,Place value and number systems,preparatory
+MATH,Fractions and decimals,preparatory
+MATH,Ratio and proportion,preparatory
+MATH,Percentages and applications,preparatory
+MATH,Integers and negative numbers,preparatory
+MATH,Rational and irrational numbers,preparatory
+MATH,Exponents and surds,preparatory
+MATH,Algebraic expressions,preparatory
+MATH,Linear equations in one variable,preparatory
+MATH,Simultaneous linear equations,preparatory
+MATH,Quadratic equations,preparatory
+MATH,Polynomials and factorisation,preparatory
+MATH,Arithmetic and geometric sequences,preparatory
+MATH,Functions and graphs,middle
+MATH,Coordinate geometry,middle
+MATH,Lines and angles,middle
+MATH,Triangles and congruence,middle
+MATH,Similarity and scale,middle
+MATH,Pythagoras theorem,middle
+MATH,Trigonometric ratios,middle
+MATH,Circles: chords and tangents,middle
+MATH,Area and perimeter,middle
+MATH,Surface area and volume,middle
+MATH,Constructions,middle
+MATH,Transformations and symmetry,middle
+MATH,Data collection and representation,middle
+MATH,Measures of central tendency,secondary
+MATH,Probability of events,secondary
+MATH,Sets and Venn diagrams,secondary
+MATH,Logical reasoning and proof,secondary
+MATH,Vectors,secondary
+MATH,Matrices,secondary
+MATH,Differentiation basics,secondary
+MATH,Integration basics,secondary
+MATH,Financial mathematics,secondary
+MATH,"Time, speed and distance",secondary
+MATH,Units and measurement,secondary
+MATH,Estimation and rounding,secondary
+MATH,Statistics: dispersion,secondary
+MATH,Inequalities,secondary
+SST,Early river valley civilisations,preparatory
+SST,Empires and trade routes,preparatory
+SST,Medieval kingdoms of the subcontinent,preparatory
+SST,Colonialism and resistance,preparatory
+SST,Freedom movement and independence,preparatory
+SST,The Constitution and fundamental rights,preparatory
+SST,Democracy and elections,middle
+SST,Local government and panchayats,middle
+SST,Judiciary and rule of law,middle
+SST,Landforms and plate tectonics,middle
+SST,Climate zones and monsoon,middle
+SST,Rivers and water resources,middle
+SST,Agriculture and food security,middle
+SST,Industries and resources,secondary
+SST,Population and urbanisation,secondary
+SST,Transport and communication,secondary
+SST,"Money, markets and livelihoods",secondary
+SST,Globalisation and development,secondary
+SST,Environmental conservation,secondary
+SST,Disaster preparedness,secondary
+ENG,Reading for main idea and detail,preparatory
+ENG,Inference and author's purpose,preparatory
+ENG,Vocabulary in context,preparatory
+ENG,Narrative writing,preparatory
+ENG,Descriptive writing,preparatory
+ENG,Argumentative and persuasive writing,preparatory
+ENG,Letter and email writing,middle
+ENG,Report and notice writing,middle
+ENG,Summary and note-making,middle
+ENG,Poetry: imagery and sound devices,middle
+ENG,Drama: character and dialogue,middle
+ENG,Prose: theme and setting,middle
+ENG,Grammar: tenses and agreement,middle
+ENG,Grammar: clauses and sentence types,secondary
+ENG,Punctuation and editing,secondary
+ENG,Speaking: presentations,secondary
+ENG,Listening comprehension,secondary
+ENG,Media literacy,secondary
+ENG,Research and citation,secondary
+ENG,Comparative reading across texts,secondary

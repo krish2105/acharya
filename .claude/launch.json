@@ -6,6 +6,12 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["--dir", "web", "dev"],
       "port": 3000
+    },
+    {
+      "name": "worker",
+      "runtimeExecutable": "worker/.venv/bin/uvicorn",
+      "runtimeArgs": ["app.main:app", "--app-dir", "worker", "--port", "8000"],
+      "port": 8000
     }
   ]
 }

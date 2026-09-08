@@ -1,0 +1,61 @@
+outcome_a_ref,outcome_a_framework,outcome_b_ref,outcome_b_framework,concept_title
+CBSE.MATH.6.3.8,CBSE,DP.MATH.11.1.3,IB_DP,Units and measurement
+CBSE.MATH.6.3.8,CBSE,DP.MATH.12.1.2,IB_DP,Units and measurement
+CBSE.MATH.6.3.8,CBSE,IGCSE.0580.9.5,IGCSE,Units and measurement
+CBSE.MATH.3.2.5,CBSE,MYP.MATH.6.B.2,IB_MYP,Pythagoras theorem
+CBSE.MATH.3.2.5,CBSE,MYP.MATH.7.A.1,IB_MYP,Pythagoras theorem
+CBSE.MATH.3.2.5,CBSE,CAMB.MATH.5Nn.03,CAMB_PRIMARY,Pythagoras theorem
+CBSE.MATH.3.1.1,CBSE,CAMB.MATH.1Nn.03,CAMB_PRIMARY,Exponents and surds
+CBSE.MATH.3.1.1,CBSE,CAMB.MATH.2Nn.02,CAMB_PRIMARY,Exponents and surds
+CBSE.MATH.3.1.1,CBSE,CAMB.MATH.3Nn.01,CAMB_PRIMARY,Exponents and surds
+CBSE.SCI.3.1.3,CBSE,CAMB.SCI.3Bp.03,CAMB_PRIMARY,Heredity and Mendelian inheritance
+CBSE.SCI.3.1.3,CBSE,CAMB.SCI.4Bp.02,CAMB_PRIMARY,Heredity and Mendelian inheritance
+CBSE.SCI.3.1.3,CBSE,CAMB.SCI.5Bp.01,CAMB_PRIMARY,Heredity and Mendelian inheritance
+CBSE.SCI.9.3.8,CBSE,AP.BIO.11.2.6,AP,Enzymes and reaction rates
+CBSE.SCI.9.3.8,CBSE,AP.BIO.12.2.5,AP,Enzymes and reaction rates
+CBSE.MATH.4.3.8,CBSE,MYP.MATH.9.C.3,IB_MYP,Vectors
+CBSE.MATH.4.3.8,CBSE,MYP.MATH.10.B.2,IB_MYP,Vectors
+CBSE.MATH.4.3.8,CBSE,DP.MATH.11.1.1,IB_DP,Vectors
+CBSE.MATH.3.3.8,CBSE,MYP.MATH.8.C.3,IB_MYP,Probability of events
+CBSE.MATH.3.3.8,CBSE,MYP.MATH.9.B.2,IB_MYP,Probability of events
+CBSE.MATH.3.3.8,CBSE,MYP.MATH.10.A.1,IB_MYP,Probability of events
+CBSE.SCI.3.2.6,CBSE,MYP.SCI.6.C.3,IB_MYP,"Atoms, elements and compounds"
+CBSE.SCI.3.2.6,CBSE,MYP.SCI.7.B.2,IB_MYP,"Atoms, elements and compounds"
+CBSE.SCI.3.2.6,CBSE,MYP.SCI.8.A.1,IB_MYP,"Atoms, elements and compounds"
+CBSE.MATH.3.2.6,CBSE,MYP.MATH.6.C.3,IB_MYP,Area and perimeter
+CBSE.MATH.3.2.6,CBSE,MYP.MATH.7.B.2,IB_MYP,Area and perimeter
+CBSE.MATH.3.2.6,CBSE,MYP.MATH.8.A.1,IB_MYP,Area and perimeter
+CBSE.MATH.3.1.3,CBSE,CAMB.MATH.3Nn.03,CAMB_PRIMARY,Arithmetic and geometric sequences
+CBSE.MATH.3.1.3,CBSE,CAMB.MATH.4Nn.02,CAMB_PRIMARY,Arithmetic and geometric sequences
+CBSE.MATH.3.1.3,CBSE,CAMB.MATH.5Nn.01,CAMB_PRIMARY,Arithmetic and geometric sequences
+CBSE.SCI.10.3.8,CBSE,AP.BIO.11.3.7,AP,Respiratory system
+CBSE.SCI.10.3.8,CBSE,AP.BIO.12.2.6,AP,Respiratory system
+CBSE.SCI.6.3.8,CBSE,DP.BIO.11.1.3,IB_DP,Electric circuits
+CBSE.SCI.6.3.8,CBSE,DP.BIO.12.1.2,IB_DP,Electric circuits
+CBSE.SCI.6.3.8,CBSE,IGCSE.0610.9.5,IGCSE,Electric circuits
+CBSE.MATH.7.3.8,CBSE,DP.MATH.11.2.4,IB_DP,Inequalities
+CBSE.MATH.7.3.8,CBSE,DP.MATH.12.1.3,IB_DP,Inequalities
+CBSE.MATH.7.3.8,CBSE,CAMB.MATH.6Ni.02,CAMB_LOWER_SEC,Inequalities
+CBSE.SCI.5.3.8,CBSE,MYP.SCI.10.C.3,IB_MYP,Heat transfer and thermal energy
+CBSE.SCI.5.3.8,CBSE,DP.BIO.11.1.2,IB_DP,Heat transfer and thermal energy
+CBSE.SCI.5.3.8,CBSE,DP.BIO.12.1.1,IB_DP,Heat transfer and thermal energy
+CBSE.MATH.5.3.8,CBSE,MYP.MATH.10.C.3,IB_MYP,Integration basics
+CBSE.MATH.5.3.8,CBSE,DP.MATH.11.1.2,IB_DP,Integration basics
+CBSE.MATH.5.3.8,CBSE,DP.MATH.12.1.1,IB_DP,Integration basics
+CBSE.SCI.3.1.1,CBSE,CAMB.SCI.1Bp.03,CAMB_PRIMARY,Human digestive system
+CBSE.SCI.3.1.1,CBSE,CAMB.SCI.2Bp.02,CAMB_PRIMARY,Human digestive system
+CBSE.SCI.3.1.1,CBSE,CAMB.SCI.3Bp.01,CAMB_PRIMARY,Human digestive system
+CBSE.MATH.3.2.4,CBSE,MYP.MATH.6.A.1,IB_MYP,Lines and angles
+CBSE.MATH.3.2.4,CBSE,CAMB.MATH.4Nn.03,CAMB_PRIMARY,Lines and angles
+CBSE.MATH.3.2.4,CBSE,CAMB.MATH.5Nn.02,CAMB_PRIMARY,Lines and angles
+CBSE.SCI.3.1.2,CBSE,CAMB.SCI.2Bp.03,CAMB_PRIMARY,Nervous system and reflexes
+CBSE.SCI.3.1.2,CBSE,CAMB.SCI.3Bp.02,CAMB_PRIMARY,Nervous system and reflexes
+CBSE.SCI.3.1.2,CBSE,CAMB.SCI.4Bp.01,CAMB_PRIMARY,Nervous system and reflexes
+CBSE.SCI.8.3.8,CBSE,DP.BIO.12.2.4,IB_DP,Photosynthesis: Calvin cycle
+CBSE.SCI.8.3.8,CBSE,AP.BIO.11.2.5,AP,Photosynthesis: Calvin cycle
+CBSE.SCI.8.3.8,CBSE,AP.BIO.12.2.4,AP,Photosynthesis: Calvin cycle
+CBSE.SCI.3.3.7,CBSE,MYP.SCI.7.C.3,IB_MYP,"Acids, bases and salts"
+CBSE.SCI.3.3.7,CBSE,MYP.SCI.8.B.2,IB_MYP,"Acids, bases and salts"
+CBSE.SCI.3.3.7,CBSE,MYP.SCI.9.A.1,IB_MYP,"Acids, bases and salts"
+CBSE.SCI.3.2.5,CBSE,MYP.SCI.6.B.2,IB_MYP,Microorganisms and disease
+CBSE.SCI.3.2.5,CBSE,MYP.SCI.7.A.1,IB_MYP,Microorganisms and disease

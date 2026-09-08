@@ -29,7 +29,7 @@ describe('cross-tenant RLS isolation (Phase 0 acceptance test, integration)', ()
     const { data, error } = await kalanjaliTeacherClient.from('students').select('id, school_id');
     expect(error).toBeNull();
     const students = (data ?? []) as { id: string; school_id: string }[];
-    expect(students.length).toBe(50);
+    expect(students.length).toBeGreaterThanOrEqual(50); // 50 in 6A + later phases' sections, never tenant B's
     expect(new Set(students.map((s) => s.school_id))).toEqual(
       new Set(['a0000000-0000-0000-0000-000000000001']),
     );

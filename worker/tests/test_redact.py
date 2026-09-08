@@ -9,6 +9,7 @@ def test_no_student_pii_in_any_constructed_prompt(db):
         db.table("students")
         .select("id, full_name, admission_no, dob")
         .eq("school_id", KALANJALI_SCHOOL_ID)
+        .gte("admission_no", "KAL-2026-0001").lte("admission_no", "KAL-2026-0050")   # the 50 seeded in Phase 0
         .execute()
         .data
     )

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="meta">
+  <div><b>Covering for</b>{{ teacher }}</div>
+  <div><b>Day</b>{{ day }}</div>
+  <div><b>Periods</b>{{ rows | length }}</div>
+</div>
+<div class="callout">Everything below was approved by {{ teacher }} before it reached this pack. Teach from it as written; note anything you changed on the back page for the returning teacher.</div>
+{% for r in rows %}
+<h2>Period {{ r.period }} · {{ r.time }} · {{ r.klass }} · {{ r.subject }}</h2>
+{% if r.unit %}<p class="muted">Unit in progress: <b style="display:inline;color:#1b1d21;font-size:10pt;text-transform:none;letter-spacing:0">{{ r.unit.sequence_no }}. {{ r.unit.title }}</b></p>{% endif %}
+{% if r.artifacts %}
+{% for a in r.artifacts %}
+<h3>{{ a.kind | capitalize }} — {{ a.title }}</h3>
+<ol>{% for l in a.lines %}<li>{{ l }}</li>{% endfor %}</ol>
+{% endfor %}
+{% else %}<p class="muted">No approved material for this class yet — use the unit's textbook chapter and note what was covered.</p>{% endif %}
+{% endfor %}
+<div class="page-break"></div>
+<h2>Notes for the returning teacher</h2>
+<table><tr><th style="width:18%">Period</th><th>What was covered / what to revisit</th></tr>
+{% for r in rows %}<tr><td>{{ r.period }} · {{ r.klass }}</td><td style="height:22mm"></td></tr>{% endfor %}</table>
+<div class="sig"><div>Substitute teacher</div><div>Date</div></div>
+{% endblock %}

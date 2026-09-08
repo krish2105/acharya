@@ -22,6 +22,12 @@ class Settings:
 
     supabase_url: str
     supabase_service_role_key: str
+    worker_token: str
+    resend_api_key: str
+    smtp_host: str
+    smtp_port: int
+    mail_from: str
+    web_url: str
 
 
 @lru_cache
@@ -41,4 +47,10 @@ def get_settings() -> Settings:
         groq_base_url=os.environ.get("GROQ_BASE_URL", "https://api.groq.com/openai/v1"),
         supabase_url=os.environ.get("SUPABASE_URL", ""),
         supabase_service_role_key=os.environ.get("SUPABASE_SERVICE_ROLE_KEY", ""),
+        worker_token=os.environ.get("WORKER_TOKEN", ""),
+        resend_api_key=os.environ.get("RESEND_API_KEY", ""),
+        smtp_host=os.environ.get("SMTP_HOST", "127.0.0.1"),
+        smtp_port=int(os.environ.get("SMTP_PORT", "54345")),
+        mail_from=os.environ.get("MAIL_FROM", "ACHARYA <noreply@acharya.demo>"),
+        web_url=os.environ.get("WEB_URL", "http://localhost:3000"),
     )

@@ -73,3 +73,31 @@ One row per call: `template_key`/`template_version`, `provider`, `model`,
 ("write an encouraging note about {topic}"), not a real SAARTHI/PRASHNA
 template. Real templates (item generation, descriptors, lesson plans, ...)
 arrive with their respective phases.
+
+
+## Phase 6 notes
+
+- **Providers in production**: `AI_PROVIDER=gemini` (Gemini Flash), then Groq,
+  then Ollama; unconfigured providers are skipped, never attempted. The
+  leadership report (`/leadership`) shows the provider mix per tenant.
+- **Streaming**: SAARTHI's `/saarthi/generate/stream` emits stage events
+  (redacting → generating → validating → guardrails) over SSE via
+  `web/app/api/saarthi/generate/route.ts`; the final artifact is still written
+  only after schema validation and guardrails pass.
+- **Guardrails** (post-validation): parent-facing and descriptor text is
+  scanned for comparative, diagnostic, predictive and personality language in
+  English and Hindi; a hit fails the generation loudly (`GuardrailError`), no
+  silent rewrite.
+- **What is logged**: `template_key`, version, provider, model, prompt
+  **hash**, redaction count, tokens, latency, validation result. Never the
+  prompt, never the redaction map.
+- **Time-saved estimates** (`web/lib/leadership.ts`) are stated per artifact
+  type and shown on the page and in the PDF; they are assumptions, not
+  measurements.
+- **Retry carries the errors**: the single schema-validation retry (rule 15) now
+  appends the validator's field-level errors to the user prompt so the model
+  corrects the exact fields. The errors quote only the model's own redacted
+  output; the logged prompt hash is that of the original prompt.
+- **Script check**: when a template asks for Hindi (`language_name` starts with
+  "Hindi"), output with no Devanagari characters is treated as a validation
+  failure and goes through the same single retry; a second miss fails loudly.

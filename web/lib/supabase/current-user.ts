@@ -5,6 +5,7 @@ import { createClient } from './server';
 export interface CurrentUser {
   id: string;
   fullName: string;
+  email: string;
   role: Role;
   schoolId: string;
   schoolName: string;
@@ -30,6 +31,7 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
   return {
     id: profile.id,
     fullName: profile.full_name,
+    email: user.email ?? '',
     role: profile.role as Role,
     schoolId: profile.school_id,
     schoolName: (profile.schools as unknown as { name: string } | null)?.name ?? '',

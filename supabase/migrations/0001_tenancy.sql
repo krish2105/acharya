@@ -149,14 +149,19 @@ create policy subjects_tenant_isolation on subjects for all
 create policy sections_tenant_isolation on sections for all
   using (school_id = (auth.jwt() ->> 'school_id')::uuid);
 
+-- staff see the tenant's students; parents and students are scoped to their
+-- own rows by the DARPAN migration's students_parent_read policy.
 create policy students_tenant_isolation on students for all
-  using (school_id = (auth.jwt() ->> 'school_id')::uuid);
+  using (school_id = (auth.jwt() ->> 'school_id')::uuid
+         and coalesce(auth.jwt() ->> 'user_role', '') not in ('parent','student'));
 
 create policy teaching_assignments_tenant_isolation on teaching_assignments for all
   using (school_id = (auth.jwt() ->> 'school_id')::uuid);
 
 create policy guardians_tenant_isolation on guardians for all
-  using (school_id = (auth.jwt() ->> 'school_id')::uuid);
+  using (school_id = (auth.jwt() ->> 'school_id')::uuid
+         and coalesce(auth.jwt() ->> 'user_role', '') not in ('parent','student'));
+create policy guardians_self_read on guardians for select using (auth_user_id = auth.uid());
 
 -- student_guardians has no school_id column; scope via the referenced student.
 create policy student_guardians_tenant_isolation on student_guardians for all

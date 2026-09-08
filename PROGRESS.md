@@ -1,149 +1,153 @@
 # PROGRESS
 
-## Phase 0 -- Foundation and AI gateway: COMPLETE
+## Status: Phases 0–6 built and verified locally — deploy pending credentials
 
-All Phase 0 tasks (Section 8) are built and verified against a real, running
-local stack (Supabase Postgres via `supabase start`, Ollama `llama3.1:8b`
-locally). Nothing from Phases 1-6 was built.
+Every phase of the master document (Sections 8, Phases 0–6) is built against the
+real local stack (Supabase Postgres via `supabase start`, FastAPI worker, Ollama
+`llama3.1:8b`), with the acceptance tests below passing from a clean
+`supabase db reset`. The only outstanding step is the live deployment
+(Vercel `bom1` + Render Singapore + Supabase `ap-south-1`), which needs
+credentials the owner will paste — see "Next" at the bottom and `docs/DEPLOY.md`.
 
-### Acceptance tests (Section 8) -- all passing, with real evidence
+Nothing has been committed since the Phase 0 commit; ask before committing.
 
-1. **Two seeded tenants; a user in tenant A gets zero rows from tenant B.**
-   `web/tests/rls.test.ts` -- logs in as the real seeded `teacher@kalanjali.demo`
-   user via the Auth API, confirms 50 visible students (all tenant A), and
-   confirms an explicit filter for tenant B's `school_id` returns `[]`.
-2. **Redaction: no PII from the 50 seeded students in any constructed
-   prompt.** `worker/tests/test_redact.py` -- for every one of the 50 seeded
-   students (+ their guardian), builds a realistic prompt and asserts none of
-   name/admission_no/dob/phone/email survive redaction, then confirms
-   re-substitution restores the name for the final output.
-3. **Gateway returns schema-valid output from local Ollama, and falls back
-   correctly when the primary is unreachable.** `worker/tests/test_gateway.py`
-   -- one test calls the real local Ollama server and gets schema-valid JSON
-   back plus a `generation_log` row; a second test configures Gemini as
-   primary with a *reachable-but-wrong* endpoint (an actual attempted-and-failed
-   call, not just "no key set"), and confirms the gateway falls through Groq
-   (unconfigured, skipped) to Ollama and still succeeds.
-4. **An artifact cannot enter `approved` without an `approvals` row.**
-   `web/tests/approval.test.ts` -- a direct `UPDATE ... SET status = 'approved'`
-   with no approval on file is rejected by Postgres; `approveArtifact()` then
-   writes the ledger row and the same transition succeeds.
-5. **`verify_chain()` returns `OK` on 30 events and detects a tampered
-   fixture.** `web/tests/audit.test.ts` -- 30 real events via `logEvent()`
-   verify `OK`; a simulated lower-level compromise (superuser connection
-   disabling the insert-only guard for one corrupting `UPDATE`, since no
-   normal grant or permanent DB function can tamper with the table at all)
-   is then detected and reported with the offending row id.
-
-### Full test run (this session, from a clean `supabase db reset`)
+## Final run (2026-09-08, from `supabase db reset`)
 
 ```
-web:    pnpm typecheck   -> clean
-        pnpm lint        -> clean
-        pnpm test        -> 6 files, 30 tests passed
-        pnpm build       -> clean production build
-worker: pytest           -> 4 passed (2 requires_ollama, run locally;
-                             CI runs the other 2 -- see below)
-db:     supabase db lint -> No schema errors found
+db:      supabase db reset          -> 8 migrations + 13 seeds, ~25 s
+         supabase db lint           -> 0 errors
+web:     pnpm typecheck             -> clean
+         pnpm lint                  -> clean
+         pnpm test  (vitest)        -> 7 files, 34 tests passed
+         pnpm build                 -> clean production build (55 routes)
+         pnpm test:e2e (prod build) -> 9 passed (51.3s) (9 demo-path tests incl. axe)
+         lighthouse (desktop)       -> /login 95 / 100 / 100 / 100, / 100 / 96 / 100 / 100
+                                        (perf / a11y / best-practices / seo; LCP 0.9 s, CLS 0)
+worker:  pytest -m "not requires_ollama" -> 34 passed
+         pytest -m requires_ollama        -> 7 passed, 1 failed in the full 8-test run (5:15, run under load);
+                                             the failing items test then passed in isolation (1 passed, 6:34) after the
+                                             gateway/Ollama fixes below; the Hindi lesson-plan test passed in the same pass
 ```
 
-CI (`.github/workflows/ci.yml`) runs everything above except the two
-`@pytest.mark.requires_ollama` gateway tests, which need a local Ollama
-server with a multi-GB model pulled -- impractical on a hosted runner. Those
-two were run and verified live in this session (output above); see
-`docs/AI-GATEWAY.md`.
+## Demo tenant (Section 9) — as seeded
 
-### Deliverables checklist (Section 8)
+62 sections · 180 teaching staff with logins (+3 named coordinators) · 130 students
+(two full Class 6 sections + transition/portal cohorts) · 400 outcomes per tenant across
+CBSE / IB / Cambridge / AP · 620 items (200 human-written, 400 AI, 20 planted miscalibrated)
+· 180 SAARTHI artifacts (140 approved with edit distances, 3 in Hindi) · one complete
+DARPAN term for 6A + 6B (392 observations, 356 360° inputs, 266 approved descriptors,
+4 unapproved, released reports) · CPD for 40 teachers · timetable for the demo teacher
+· Class 10 two-exam calendar · 637 gateway records (hash only) · 828 approvals.
+54 RLS-enabled tables, 216 indexes. Snapshot in schema `demo_snapshot`; `reset_demo()`
+restores it in well under 45 s (measured in `web/tests/hardening.test.ts`).
 
-- [x] `web/` (Next.js 15, TS, Tailwind 4, shadcn/ui) + `worker/` (FastAPI,
-      Python 3.12) scaffolded per Section 5's tree
-- [x] Local Supabase (`pgvector` enabled, unused until Phase 1) + local
-      Ollama, both running
-- [x] Migration `0001_tenancy.sql` -- schools, frameworks (7 seeded rows
-      across the 4 boards), profiles, subjects, sections, students,
-      guardians, teaching_assignments, custom JWT claims hook, RLS
-- [x] Migration `0002_audit_gateway_approval.sql` -- hash-chained
-      `audit_events` + `verify_chain()`, `prompt_templates`,
-      `generation_log`, `approvals`, `enforce_approval_gate()`,
-      `demo_artifacts` (Phase 0's own throwaway proof table)
-- [x] `web/lib/rbac` -- `can(user, action, module, resource)`, Section 3's
-      matrix transcribed as data, 15 unit tests
-- [x] `web/lib/audit` -- `logEvent()`, `verifyChain()`
-- [x] **AI gateway** (`worker/app/gateway.py`) -- gemini → groq → ollama
-      fallback, schema validation + 1 retry, `generation_log` writes
-- [x] **Redaction layer** (`worker/app/redact.py`) -- context-aware known-value
-      substitution + re-substitution
-- [x] `web/lib/approval` -- `approveArtifact()` (with Levenshtein edit
-      distance), `transitionArtifactStatus()`
-- [x] Approval card + outcome chip components, wired to a seeded artifact,
-      manually verified end to end in a real browser session (login →
-      approve → reload → still approved → DB rows confirmed)
-- [x] App shell -- sidebar (RBAC-gated), framework switcher, role badge,
-      login/logout, auth guard
-- [x] CI (`.github/workflows/ci.yml`)
-- [x] `docs/ARCHITECTURE.md`, `docs/AI-GATEWAY.md`, `docs/SAFETY.md` v1
-- [x] Green CI-equivalent run (see above; no GitHub remote exists yet to
-      trigger real Actions -- ask before creating one)
+## Acceptance tests by phase
 
-### Two things that had to be airtight (kickoff instruction #5)
+### Phase 0 — Foundation & gateway (all green, unchanged)
+1. Cross-tenant isolation — `web/tests/rls.test.ts`
+2. No student PII in any constructed prompt (50-student cohort) — `worker/tests/test_redact.py`
+3. Gateway schema-valid from Ollama + fallback when primary unreachable — `test_gateway.py` (live)
+4. Artifact cannot enter `approved` without an `approvals` row — `web/tests/approval.test.ts`
+5. `verify_chain()` OK on 30 events, detects tampering — `web/tests/audit.test.ts`
 
-- **PII redaction**: DB-verified against all 50 seeded students, both
-  directions (redact + re-substitute), via a real prompt-construction
-  scenario, not a synthetic one-liner.
-- **Approval gate**: enforced by a Postgres trigger
-  (`enforce_approval_gate()`), not application code -- proven by directly
-  attempting to bypass it in SQL, both in this session's manual verification
-  and in the automated `approval.test.ts`.
+### Phase 1 — SETU (`worker/tests/test_setu.py`)
+400 outcomes ingested across 4 frameworks with embeddings; alignment engine proposes,
+60 human-confirmed equivalents; LLM relation labelling (live); transition report for a
+CBSE→Cambridge student lists 7 gaps as PDF in < 5 s; coverage suppresses cells < 5.
 
-### Assumptions and deviations from the master document (flagged as they arose)
+### Phase 2 — PRASHNA (`worker/tests/test_prashna.py`)
+20 case-based items generated from CBSE.SCI.10.4.2, every one outcome-linked (live);
+paper assembled to blueprint at exactly 50.0 % competency share; improvement paper is
+disjoint with the same competency share; marks import + calibration flags the 20 planted
+items and no others; zero-link item save rejected by the DB.
 
-1. **JWT claim renamed `role` → `user_role`.** PostgREST reserves the `role`
-   claim to select the Postgres database role executing the request;
-   overwriting it with an app-level value (`'teacher'`) broke PostgREST's own
-   role switching. Section 6.8's illustrative RLS snippets use
-   `auth.jwt() ->> 'role'` for the app role -- every future phase's RLS
-   policy must use `user_role` instead. Documented in `docs/ARCHITECTURE.md`.
-2. **`demo_artifacts` is a Phase-0-only table**, not Section 6.5's real
-   `artifacts` table (that's Phase 3/SAARTHI). It exists only to prove the
-   approval gate, the approval card and the outcome chip end to end before
-   any real feature table exists, per the master doc's own phrase "wired to
-   a seeded dummy artifact."
-3. **AI provider fallback tested without real Gemini/Groq credentials** (per
-   your answer to my first clarifying question) -- `.env.example` documents
-   the keys; the fallback test proves the fallthrough logic with a
-   configured-but-unreachable primary rather than a live cloud call. Add real
-   keys later; no feature code changes required (rule 16).
-4. **Local Supabase only**, ports shifted +20 in `supabase/config.toml`
-   (54341/54342/54343/54344/54349) because this machine already runs another
-   project's local Supabase stack on the CLI's default ports. `analytics`
-   and `edge_runtime` are disabled -- unused in Phase 0, and disabling them
-   meaningfully reduced load on the Colima VM.
-5. **Worker Python is 3.12** via Homebrew (`python@3.12`), matching the
-   pinned stack -- the system's default `python3` was 3.14.
-6. **Two seeded tenants**: "Kalanjali International School, Jaipur" (the
-   fixed fictional demo tenant, minimally seeded -- full demo data per
-   Section 9 is a Phase 6 task) + a throwaway fictional "Rivermist Public
-   School" that exists only to prove cross-tenant isolation, never a demo
-   asset.
-7. **No git commits or GitHub remote were created.** Ask before either.
+### Phase 3 — SAARTHI (`worker/tests/test_saarthi.py`)
+Worksheet without an outcome link cannot be saved; approval gate on artifacts; parent
+message redaction round-trip (live); comparative/diagnostic language rejected (live);
+lesson plan + Hindi worksheet with Devanagari PDF (live); remediation set is bank-first.
 
-## Next session
+### Phase 4 — DARPAN (`worker/tests/test_darpan.py`, `web/tests`)
+Descriptor prompt carries no PII (live); `super_admin` gets zero DARPAN content rows; peer
+input anonymised to the receiving student; descriptor guardrail; HPC report PDF; release
+to parent; token link submits without login.
 
-Phase 1 -- SETU. Read `CLAUDE.md`, this file, and re-read Section 2
-(non-negotiable rules) and Section 8's Phase 1 tasks in the master document
-before starting.
+### Phase 5 — UDAY (`worker/tests/test_uday.py`)
+Unit must keep ≥ 1 unplugged activity; hours ledger and Monday projections; evidence pack
+PDF for a grade; no AI scoring path for projects.
 
-## Local dev quick start
+### Phase 6 — Hardening & demo (`worker/tests/test_phase6.py`, `web/tests/hardening.test.ts`, `web/e2e`)
+- Every FK column indexed; every table with `school_id`/`student_id` has RLS + ≥ 1 policy.
+- `reset_demo()` restores the snapshot (measured < 45 s; audit rows preserved).
+- MFA helper: privileged roles gated only once a verified factor exists.
+- Digests enqueue (pg_cron functions) and deliver via SMTP to Mailpit with no student names.
+- DPDP export contains only that student; erasure anonymises the row and deletes personal records.
+- Substitute pack contains approved material only; leadership PDF renders.
+- Playwright demo path (teacher, principal, parent, student, cross-tenant) with axe WCAG 2.1 AA
+  on dashboard / My Day / approvals / leadership / parent portal; security headers asserted.
+- Lighthouse ≥ 90 on public pages (table above).
+- Screenshot pack: `docs/screenshots/` — 12 desktop 1440×900 + 6 mobile 390×844.
 
-```bash
-colima start                    # Docker runtime (if not already running)
-supabase start                  # local Postgres/Auth/Storage/REST
-supabase db reset               # apply migrations + seed data
-ollama serve                    # if not already running
-cd web && pnpm install && pnpm dev
-cd worker && source .venv/bin/activate && uvicorn app.main:app --reload
-```
+## Phase 6 deliverables
 
-Test credentials (local only): `teacher@kalanjali.demo` / `Demo@2026`
-(also `academic@kalanjali.demo`, `hod@kalanjali.demo`,
-`teacher@rivermist-test.demo`).
+- Migration `0008_hardening.sql`: indexes, `timetable_periods`, `exam_events`,
+  `notification_queue` + pg_cron (08:00 HOD digest, Mon 09:00 descriptor reminders,
+  03:00 coverage refresh), `erasure_requests` + `execute_erasure()`, MFA restrictive
+  policies (`privileged_aal_ok()`), `my_sessions` + `revoke_my_session()`,
+  `snapshot_demo()` / `reset_demo()`.
+- Seed `0013_demo.sql` (generated by `worker/scripts/gen_demo_seed.py`).
+- Worker: `/notify/flush`, `/notify/enqueue-now` (Resend or SMTP), `/dpdp/export`,
+  `/dpdp/erase`, `/saarthi/substitute-pack`, `/leadership/report`; Dockerfile.
+- Web: security headers (CSP/HSTS/COOP…), `/my-day` (period-aware, substitute pack),
+  `/approvals` (one keyboard queue across items/artifacts/descriptors), `/exams`
+  (calendar + Class 10 two-exam planner), `/leadership` (AI usage, edit-distance,
+  time-saved with stated assumptions, PDF), `/audit` (chain badge, filters),
+  `/security` (TOTP enrolment, MFA challenge at login, device sessions), `/consent`
+  (DPDP ledger, export, erasure workflow; parent portal export/erasure), `/admin`
+  (reset demo, digests, tour), guided tour, ⌘K global actions, Hindi/English on all
+  new screens, PWA manifest + service worker.
+- Deploy: `web/vercel.json`, `render.yaml`, `worker/Dockerfile`; CI unchanged.
+- Docs: README, `docs/DEMO-SCRIPT.md`, `FRAMEWORK-MAP.md`, `DATA-MODEL.md`,
+  `SECURITY.md`, `DEPLOY.md`, updated `SAFETY.md`, `ARCHITECTURE.md`, `AI-GATEWAY.md`.
+
+## Fixes made this session to earlier phases
+
+- `test_redact.py` cohort filter (the SETU seed moves KAL-2026-0007 to 9A; the Phase-6
+  erasure test adds an `ERASED-` row) — now selects admission numbers 0001–0050 explicitly.
+- ⌘K palette never mounted its `Command` root (base-nova `CommandDialog` does not supply
+  one) — a latent Phase 0 bug found by the new e2e suite; fixed in
+  `components/shell/command-palette.tsx`.
+- Vitest integration files now run serially (`fileParallelism: false`): the approval-gate
+  test raced `reset_demo()`.
+- `Counter` (`components/motion/primitives.tsx`) looped ("Maximum update depth exceeded")
+  under reduced motion because its effect depended on an inline `format` function — now
+  read through a ref.
+- Hydration mismatch (shifted Base UI `useId`s) whenever the browser has
+  `prefers-reduced-motion`: `template.tsx`, `Reveal`, `Stagger`, `SplitWords` and
+  `Magnetic` returned a different element tree in reduced mode. They now render the same
+  tree and only drop the animation.
+- Gateway retry (rule 15) now feeds the validator's field errors back to the model, and a
+  Devanagari script check joins schema validation for Hindi templates — both found by the
+  live-model run, where llama3.1:8b drifted on `parts[].text` and answered a Hindi
+  worksheet in English.
+
+## Known limits / honest notes
+
+- MFA is enforced by RLS only for principal / academic_head / super_admin once they enrol;
+  demo accounts are unenrolled so the demo flows without an authenticator.
+- Time-saved figures are stated assumptions (`web/lib/leadership.ts`), not measurements.
+- `generation_log` rows in the seed are synthetic (hash only) so the leadership view reads
+  like a real term; live generations append real rows.
+- Hindi coverage: shell, portals, all Phase-6 screens and generated artifacts; module
+  screens from Phases 1–5 remain English-first.
+- Ollama-dependent tests are run locally (CI runs the fast suite). Ollama calls now set
+  `num_ctx 8192 / num_predict 4096` and a 300 s timeout (`OLLAMA_TIMEOUT_S`): the 2048-token
+  default context truncated long outputs and timed out under load.
+- `reset_demo()` must not run while generations are in flight for the same tenant (the
+  hardening test fails only when the live-model suite is writing concurrently).
+
+## Next
+
+1. Deploy: needs Vercel token/project, Render API key (or Blueprint connect), Supabase
+   project ref + service key (ap-south-1), Gemini + Groq keys, Resend key. Then
+   `supabase db push` + seed, Render blueprint, Vercel import, smoke per `docs/DEPLOY.md`.
+2. Commit + remote — on request only.
